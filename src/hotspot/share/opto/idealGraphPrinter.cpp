@@ -235,7 +235,7 @@ void IdealGraphPrinter::text(const char *s) {
 void IdealGraphPrinter::print_prop(const char *name, int val) {
   stringStream stream;
   stream.print("%d", val);
-  print_prop(name, stream.freeze());
+  print_prop(name, stream.freeze());//stream.freeze() return _buffer(char*)
 }
 
 void IdealGraphPrinter::print_prop(const char *name, const char *val) {
@@ -805,7 +805,7 @@ void IdealGraphPrinter::walk_nodes(Node* start, bool edges) {
 
     visit_node(n, edges);
 
-    if (_traverse_outs) {
+    if (_traverse_outs) {//default true
       for (DUIterator i = n->outs(); n->has_out(i); i++) {
         nodeStack.push(n->out(i));
       }

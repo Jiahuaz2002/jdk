@@ -1,0 +1,5 @@
+ bash configure --enable-debug --with-hsdis=binutils --with-binutils-src=~/binutils-2.37/ --with-boot-jdk=~/jdk-23.0.1/
+
+bash configure --with-debug-level=slowdebug --with-hsdis=binutils --with-binutils-src=~/binutils-2.37/ --with-boot-jdk=~/jdk-23.0.1/
+
+

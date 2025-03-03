@@ -86,6 +86,7 @@
 #include "utilities/copy.hpp"
 #include "utilities/macros.hpp"
 #include "utilities/resourceHash.hpp"
+#include "opto/sonserializer.hpp"
 
 // -------------------- Compile::mach_constant_base_node -----------------------
 // Constant table base node singleton.
@@ -850,6 +851,17 @@ Compile::Compile( ciEnv* ci_env, ciMethod* target, int osr_bci,
 
   // Now optimize
   Optimize();
+
+#ifndef PRODUCT
+  if (should_print_igv(1)) {
+    _igv_printer->print_graph("aTestGraph");
+}
+#endif
+
+
+  SonSerializer *a =new SonSerializer(C,"a.txt");
+  a->dump();
+
   if (failing())  return;
   NOT_PRODUCT( verify_graph_edges(); )
 

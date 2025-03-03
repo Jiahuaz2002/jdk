@@ -80,7 +80,7 @@ protected:
          ProfileTripFailed     = 1<<14,
          LoopNestInnerLoop     = 1<<15,
          LoopNestLongOuterLoop = 1<<16 };
-  char _unswitch_count;
+  char  _unswitch_count;
   enum { _unswitch_max=3 };
 
   // Expected trip count from profile data

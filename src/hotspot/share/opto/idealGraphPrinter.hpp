@@ -13,7 +13,7 @@
  * accompanied this code).
  *
  * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
+ * 2 along with this :work; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
@@ -129,12 +129,15 @@ class IdealGraphPrinter : public CHeapObj<mtCompiler> {
   void init(const char* file_name, bool use_multiple_files, bool append);
   void init_file_stream(const char* file_name, bool use_multiple_files);
   void init_network_stream();
+  //default constructor
   IdealGraphPrinter();
   ~IdealGraphPrinter();
 
   void print_loop_kind(const CountedLoopNode* counted_loop);
 
  public:
+  //constructor,what is a Compile object?
+  //both constructors generate a either file or network stream and a xml stream
   IdealGraphPrinter(Compile* compile, const char* file_name = nullptr, bool append = false);
   static void clean_up();
   static IdealGraphPrinter *printer();
