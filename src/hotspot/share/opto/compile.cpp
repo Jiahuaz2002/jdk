@@ -860,7 +860,9 @@ Compile::Compile( ciEnv* ci_env, ciMethod* target, int osr_bci,
 
 
   SonSerializer *a =new SonSerializer(C,"a.txt");
-  a->dump();
+  a->set_csr();
+
+  //a->dump();
 
   if (failing())  return;
   NOT_PRODUCT( verify_graph_edges(); )
