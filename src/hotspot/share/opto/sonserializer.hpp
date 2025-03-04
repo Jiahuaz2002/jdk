@@ -21,6 +21,7 @@
 #include "runtime/threadCritical.hpp"
 #include "runtime/threadSMR.hpp"
 #include "utilities/stringUtils.hpp"
+#include <bits/stdint-intn.h>
 class Graph;
 class CSRGraph;
 
@@ -38,14 +39,15 @@ private:
 	Graph * _graph=nullptr;
 
 public:
+	void set_csr();
 
 	SonSerializer(Compile* compile, const char* file_name=nullptr);
 	~SonSerializer();
 	void walk_nodes(Node* root);
 	void visit_node(Node* n,bool edges);
-	void set_csr();
 	void set_compile(Compile* compile) {C = compile; }
-	void dump();
+	void compress_and_dump();
+
 
 };
 //______________________________________________Graph Storage_________________________________________________
@@ -53,9 +55,8 @@ class Graph:public ResourceObj {
 private:
 public:
 //	virtual void setCompressionStrategy()=0;
-//	virtual void compress()=0;
-	virtual void reassign_idx ()=0;
-	virtual void recover_idx()=0;
+	virtual void compress_and_dump()=0;
+
 };
 //CSR format
 class CSRGraph:public Graph {
@@ -66,20 +67,31 @@ private:
 	int *_newOffset=nullptr;//after index reassign.
 	int *_newEdge=nullptr;//for current phase, just for validation.
 	int *_idxHash=nullptr;//size=_nodeNumber, _idxHash[newIdx]=oldIdx.
-	int _nodeNumber;
-	int _edgeNumber;
+	uint _nodeNumber;
+	uint _edgeNumber;
 	uint _maxNodeIdx;//idx starts from 0. And _oriOffset[_maxNodeIdx] should be valid.
 	Compile* C;
 
+	uint _kbitBytesLen;//_after kbit-encoding the Bytes length of the _newOffset. _kbitBytesLen-1 is the final index.
+
+
+
 public:
 	CSRGraph(Node* nd,int nodeNumber,int edgeNumber,int maxNodeIdx,Compile* C);
-	void reassign_idx ();
-	void recover_idx ();
-
+	void compress_and_dump()override;
 
 private:
+	//helping functions
 	int find_lowest_upper_bound(int num,bool equal);
 	int lookup_idx_hash(int old);
+	void set_bit(u_int8_t* obj,int bit);//bit from 0->7, set bit from 0->1
+	//
+	void reassign_idx ();
+	void recover_idx ();
+	void kbit_encoding();
+	void kbit_decoding();
+
+
 
 };
 

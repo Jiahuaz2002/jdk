@@ -862,6 +862,9 @@ Compile::Compile( ciEnv* ci_env, ciMethod* target, int osr_bci,
   SonSerializer *a =new SonSerializer(C,"a.txt");
   a->set_csr();
 
+  a->compress_and_dump();
+
+
   //a->dump();
 
   if (failing())  return;
