@@ -20,8 +20,6 @@ SonSerializer:: ~SonSerializer()
 	
 }
 
-
-
 void SonSerializer::walk_nodes(Node* start) {
   VectorSet visited;
   GrowableArray<Node *> nodeStack(Thread::current()->resource_area(), 0, 0, nullptr);
@@ -34,32 +32,18 @@ void SonSerializer::walk_nodes(Node* start) {
 
     ++_nodeNum;
     _maxNodeIdx=n->_idx>_maxNodeIdx?n->_idx:_maxNodeIdx;
-    //bool  _traverse_outs=true;
-    //if (_traverse_outs) {//default true
-     // for (DUIterator i = n->outs(); n->has_out(i); i++) {
-       // nodeStack.push(n->out(i));
-      //}
-    //}
-    for (uint i = 0; i < n->len(); i++)
+  //  for (DUIterator i = n->outs(); n->has_out(i); i++)
+    //    nodeStack.push(n->out(i));
+    for (uint i=0;i<n->outcnt();++i)
+      nodeStack.push(n->raw_out(i));
+    for (size_t i = 0; i < n->len(); i++)
       if (n->in(i) != nullptr) {
         nodeStack.push(n->in(i));
-        ++_edgeNum;
+        ++_edgeNum;//only count for the outgoing edges.
       }
   }
 }
 
-
-void SonSerializer::visit_node(Node* n, bool edges) {
-
-  Node *node = n;
-  _output->print_cr("Index:%d",node->_idx);
-  _output->print("Input:");
-  for (uint i=0;i<node->len();++i) {
-    if (node->in(i)!=nullptr)
-        _output->print("%d,",node->in(i)->_idx);
-  }
-  _output->print_cr("");
-}
 
 void SonSerializer::set_csr() {
   _isCSR=true;
@@ -73,7 +57,7 @@ void SonSerializer::compress_and_dump() {
 
 
 //______________________________________________Graph Storage_________________________________________________
-CSRGraph::CSRGraph(Node* nd,int nodeNumber,int edgeNumber,int maxNodeIdx,Compile* C)
+CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,uint maxNodeIdx,Compile* C)
   :_nodeNumber(nodeNumber),_edgeNumber(edgeNumber),_maxNodeIdx(maxNodeIdx),C(C)
 {
   Node* start=nd;
@@ -93,12 +77,15 @@ CSRGraph::CSRGraph(Node* nd,int nodeNumber,int edgeNumber,int maxNodeIdx,Compile
     if (visited.test_set(n->_idx))
       continue;
 
+   // for (DUIterator i = n->outs(); n->has_out(i); i++)
+   //     nodeStack.push(n->out(i));
+    for (uint i=0;i<n->outcnt();++i)
+      nodeStack.push(n->raw_out(i));
     for (uint i = 0; i < n->len(); i++)
       if (n->in(i) != nullptr) {
         nodeStack.push(n->in(i));
         _edge[pend++]=n->in(i)->_idx;
       }
-
     _oriOffset[n->_idx]=pstart;
     pstart=pend;
   }
@@ -110,23 +97,22 @@ void CSRGraph::compress_and_dump() {
   kbit_encoding();
   kbit_decoding();
   recover_idx();
-
 }
 
 
 
 //return i, _oriOffset[i] is the lowest upper bound of num.
 //_oriOffset[i] cannot be equal to num.
-int CSRGraph::find_lowest_upper_bound(int num,bool equal) {
+int CSRGraph::find_lowest_upper_bound(const int num,const bool equal) const {
   int low=INT_MAX,idx=-1;
   for (uint i=0;i<=_maxNodeIdx;++i)
     if (((equal&&_oriOffset[i]>=num)||(!equal&&_oriOffset[i]>num))&&_oriOffset[i]<low) {
       low=_oriOffset[i];
-      idx=i;
+      idx=static_cast<int>(i);
     }
   return idx;
 }
-int CSRGraph::lookup_idx_hash(int old) {
+int CSRGraph::lookup_idx_hash(const int old) const {
   for (uint i=0;i<_nodeNumber;++i)
     if (old==_idxHash[i])
       return i;
@@ -152,7 +138,7 @@ void CSRGraph::reassign_idx(){
   }
 
   //modify the edge to replace the old indices with the newly-assigned indices, O(n^2)
-  //the newEdge can be deleted after varification.
+  //the newEdge can be deleted after verification.
 
   _newEdge=(int*)C->comp_arena()->Amalloc(sizeof(int)*_edgeNumber);
   for (uint i=0;i<_edgeNumber;++i)
@@ -184,10 +170,9 @@ void CSRGraph::recover_idx() {
   }
 }
 
-void CSRGraph::set_bit(u_int8_t *obj, int bit) {
-  u_int8_t mask=1<<bit;
+void CSRGraph::set_bit(u_int8_t *obj, const int bit) {
+  const u_int8_t mask=1<<bit;
   *obj=*obj|mask;
-
 }
 
 void CSRGraph::kbit_encoding(){
@@ -201,7 +186,7 @@ void CSRGraph::kbit_encoding(){
       int obj=_newEdge[j];
       obj=obj-i;
 
-      bool neg=obj<0?true:false;
+      bool neg=obj<0;
       if (neg) {
         obj=~obj+1;//complement->source
       }

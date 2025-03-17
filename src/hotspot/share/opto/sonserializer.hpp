@@ -31,9 +31,9 @@ private:
 	Node* _root=nullptr;//coding style! add underscores
 	outputStream*_output;
 	char _buffer[512];
-	int _nodeNum=0;
+	uint _nodeNum=0;
 	uint _maxNodeIdx=0;
-	int _edgeNum=0;
+	uint _edgeNum=0;
 	bool _isCSR=false;
 	Compile* C;
 	Graph * _graph=nullptr;
@@ -44,7 +44,6 @@ public:
 	SonSerializer(Compile* compile, const char* file_name=nullptr);
 	~SonSerializer();
 	void walk_nodes(Node* root);
-	void visit_node(Node* n,bool edges);
 	void set_compile(Compile* compile) {C = compile; }
 	void compress_and_dump();
 
@@ -63,9 +62,9 @@ class CSRGraph:public Graph {
 private:
 	int *_oriOffset=nullptr;//_oriOffset[idx] points to the start of the outgoing edges. Original.
 	int *_edge=nullptr;//_egde[_oriOffset[idx]]~_edge[_oriOffset[lowest upper bound of idx]] is the outgoing edges of idx.
-
 	int *_newOffset=nullptr;//after index reassign.
 	int *_newEdge=nullptr;//for current phase, just for validation.
+
 	int *_idxHash=nullptr;//size=_nodeNumber, _idxHash[newIdx]=oldIdx.
 	uint _nodeNumber;
 	uint _edgeNumber;
@@ -77,15 +76,16 @@ private:
 
 
 public:
-	CSRGraph(Node* nd,int nodeNumber,int edgeNumber,int maxNodeIdx,Compile* C);
+	CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,uint maxNodeIdx,Compile* C);
 	void compress_and_dump()override;
+	void
 
 private:
 	//helping functions
-	int find_lowest_upper_bound(int num,bool equal);
-	int lookup_idx_hash(int old);
-	void set_bit(u_int8_t* obj,int bit);//bit from 0->7, set bit from 0->1
-	//
+	int find_lowest_upper_bound(  int num,  bool equal)const ;
+	int lookup_idx_hash( int old)const ;
+	void set_bit(u_int8_t* obj, int bit);//bit from 0->7, set bit from 0->1
+
 	void reassign_idx ();
 	void recover_idx ();
 	void kbit_encoding();

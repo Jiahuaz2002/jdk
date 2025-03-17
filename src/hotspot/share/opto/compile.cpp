@@ -852,13 +852,6 @@ Compile::Compile( ciEnv* ci_env, ciMethod* target, int osr_bci,
   // Now optimize
   Optimize();
 
-#ifndef PRODUCT
-  if (should_print_igv(1)) {
-    _igv_printer->print_graph("aTestGraph");
-}
-#endif
-
-
   SonSerializer *a =new SonSerializer(C,"a.txt");
   a->set_csr();
 
