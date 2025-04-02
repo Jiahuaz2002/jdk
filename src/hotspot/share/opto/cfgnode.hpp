@@ -318,146 +318,146 @@ public:
 
 //------------------------------IfNode-----------------------------------------
 // Output selected Control, based on a boolean test
-class IfNode : public MultiBranchNode {
- public:
-  float _prob;                           // Probability of true path being taken.
-  float _fcnt;                           // Frequency counter
+  class IfNode : public MultiBranchNode {
+   public:
+    float _prob;                           // Probability of true path being taken.
+    float _fcnt;                           // Frequency counter
 
- private:
-  AssertionPredicateType _assertion_predicate_type;
+   private:
+    AssertionPredicateType _assertion_predicate_type;
 
-  void init_node(Node* control, Node* bol) {
-    init_class_id(Class_If);
-    init_req(0, control);
-    init_req(1, bol);
-  }
+    void init_node(Node* control, Node* bol) {
+      init_class_id(Class_If);
+      init_req(0, control);
+      init_req(1, bol);
+    }
 
-  // Size is bigger to hold the probability field.  However, _prob does not
-  // change the semantics so it does not appear in the hash & cmp functions.
-  virtual uint size_of() const { return sizeof(*this); }
+    // Size is bigger to hold the probability field.  However, _prob does not
+    // change the semantics so it does not appear in the hash & cmp functions.
+    virtual uint size_of() const { return sizeof(*this); }
 
-  // Helper methods for fold_compares
-  bool cmpi_folds(PhaseIterGVN* igvn, bool fold_ne = false);
-  bool is_ctrl_folds(Node* ctrl, PhaseIterGVN* igvn);
-  bool has_shared_region(ProjNode* proj, ProjNode*& success, ProjNode*& fail);
-  bool has_only_uncommon_traps(ProjNode* proj, ProjNode*& success, ProjNode*& fail, PhaseIterGVN* igvn);
-  Node* merge_uncommon_traps(ProjNode* proj, ProjNode* success, ProjNode* fail, PhaseIterGVN* igvn);
-  static void improve_address_types(Node* l, Node* r, ProjNode* fail, PhaseIterGVN* igvn);
-  bool is_cmp_with_loadrange(ProjNode* proj);
-  bool is_null_check(ProjNode* proj, PhaseIterGVN* igvn);
-  bool is_side_effect_free_test(ProjNode* proj, PhaseIterGVN* igvn);
-  void reroute_side_effect_free_unc(ProjNode* proj, ProjNode* dom_proj, PhaseIterGVN* igvn);
-  bool fold_compares_helper(ProjNode* proj, ProjNode* success, ProjNode* fail, PhaseIterGVN* igvn);
-  static bool is_dominator_unc(CallStaticJavaNode* dom_unc, CallStaticJavaNode* unc);
+    // Helper methods for fold_compares
+    bool cmpi_folds(PhaseIterGVN* igvn, bool fold_ne = false);
+    bool is_ctrl_folds(Node* ctrl, PhaseIterGVN* igvn);
+    bool has_shared_region(ProjNode* proj, ProjNode*& success, ProjNode*& fail);
+    bool has_only_uncommon_traps(ProjNode* proj, ProjNode*& success, ProjNode*& fail, PhaseIterGVN* igvn);
+    Node* merge_uncommon_traps(ProjNode* proj, ProjNode* success, ProjNode* fail, PhaseIterGVN* igvn);
+    static void improve_address_types(Node* l, Node* r, ProjNode* fail, PhaseIterGVN* igvn);
+    bool is_cmp_with_loadrange(ProjNode* proj);
+    bool is_null_check(ProjNode* proj, PhaseIterGVN* igvn);
+    bool is_side_effect_free_test(ProjNode* proj, PhaseIterGVN* igvn);
+    void reroute_side_effect_free_unc(ProjNode* proj, ProjNode* dom_proj, PhaseIterGVN* igvn);
+    bool fold_compares_helper(ProjNode* proj, ProjNode* success, ProjNode* fail, PhaseIterGVN* igvn);
+    static bool is_dominator_unc(CallStaticJavaNode* dom_unc, CallStaticJavaNode* unc);
 
-protected:
-  ProjNode* range_check_trap_proj(int& flip, Node*& l, Node*& r);
-  Node* Ideal_common(PhaseGVN *phase, bool can_reshape);
-  Node* search_identical(int dist, PhaseIterGVN* igvn);
+  protected:
+    ProjNode* range_check_trap_proj(int& flip, Node*& l, Node*& r);
+    Node* Ideal_common(PhaseGVN *phase, bool can_reshape);
+    Node* search_identical(int dist, PhaseIterGVN* igvn);
 
-  Node* simple_subsuming(PhaseIterGVN* igvn);
+    Node* simple_subsuming(PhaseIterGVN* igvn);
 
-public:
+  public:
 
-  // Degrees of branch prediction probability by order of magnitude:
-  // PROB_UNLIKELY_1e(N) is a 1 in 1eN chance.
-  // PROB_LIKELY_1e(N) is a 1 - PROB_UNLIKELY_1e(N)
-#define PROB_UNLIKELY_MAG(N)    (1e- ## N ## f)
-#define PROB_LIKELY_MAG(N)      (1.0f-PROB_UNLIKELY_MAG(N))
+    // Degrees of branch prediction probability by order of magnitude:
+    // PROB_UNLIKELY_1e(N) is a 1 in 1eN chance.
+    // PROB_LIKELY_1e(N) is a 1 - PROB_UNLIKELY_1e(N)
+  #define PROB_UNLIKELY_MAG(N)    (1e- ## N ## f)
+  #define PROB_LIKELY_MAG(N)      (1.0f-PROB_UNLIKELY_MAG(N))
 
-  // Maximum and minimum branch prediction probabilties
-  // 1 in 1,000,000 (magnitude 6)
-  //
-  // Although PROB_NEVER == PROB_MIN and PROB_ALWAYS == PROB_MAX
-  // they are used to distinguish different situations:
-  //
-  // The name PROB_MAX (PROB_MIN) is for probabilities which correspond to
-  // very likely (unlikely) but with a concrete possibility of a rare
-  // contrary case.  These constants would be used for pinning
-  // measurements, and as measures for assertions that have high
-  // confidence, but some evidence of occasional failure.
-  //
-  // The name PROB_ALWAYS (PROB_NEVER) is to stand for situations for which
-  // there is no evidence at all that the contrary case has ever occurred.
+    // Maximum and minimum branch prediction probabilties
+    // 1 in 1,000,000 (magnitude 6)
+    //
+    // Although PROB_NEVER == PROB_MIN and PROB_ALWAYS == PROB_MAX
+    // they are used to distinguish different situations:
+    //
+    // The name PROB_MAX (PROB_MIN) is for probabilities which correspond to
+    // very likely (unlikely) but with a concrete possibility of a rare
+    // contrary case.  These constants would be used for pinning
+    // measurements, and as measures for assertions that have high
+    // confidence, but some evidence of occasional failure.
+    //
+    // The name PROB_ALWAYS (PROB_NEVER) is to stand for situations for which
+    // there is no evidence at all that the contrary case has ever occurred.
 
-#define PROB_NEVER              PROB_UNLIKELY_MAG(6)
-#define PROB_ALWAYS             PROB_LIKELY_MAG(6)
+  #define PROB_NEVER              PROB_UNLIKELY_MAG(6)
+  #define PROB_ALWAYS             PROB_LIKELY_MAG(6)
 
-#define PROB_MIN                PROB_UNLIKELY_MAG(6)
-#define PROB_MAX                PROB_LIKELY_MAG(6)
+  #define PROB_MIN                PROB_UNLIKELY_MAG(6)
+  #define PROB_MAX                PROB_LIKELY_MAG(6)
 
-  // Static branch prediction probabilities
-  // 1 in 10 (magnitude 1)
-#define PROB_STATIC_INFREQUENT  PROB_UNLIKELY_MAG(1)
-#define PROB_STATIC_FREQUENT    PROB_LIKELY_MAG(1)
+    // Static branch prediction probabilities
+    // 1 in 10 (magnitude 1)
+  #define PROB_STATIC_INFREQUENT  PROB_UNLIKELY_MAG(1)
+  #define PROB_STATIC_FREQUENT    PROB_LIKELY_MAG(1)
 
-  // Fair probability 50/50
-#define PROB_FAIR               (0.5f)
+    // Fair probability 50/50
+  #define PROB_FAIR               (0.5f)
 
-  // Unknown probability sentinel
-#define PROB_UNKNOWN            (-1.0f)
+    // Unknown probability sentinel
+  #define PROB_UNKNOWN            (-1.0f)
 
-  // Probability "constructors", to distinguish as a probability any manifest
-  // constant without a names
-#define PROB_LIKELY(x)          ((float) (x))
-#define PROB_UNLIKELY(x)        (1.0f - (float)(x))
+    // Probability "constructors", to distinguish as a probability any manifest
+    // constant without a names
+  #define PROB_LIKELY(x)          ((float) (x))
+  #define PROB_UNLIKELY(x)        (1.0f - (float)(x))
 
-  // Other probabilities in use, but without a unique name, are documented
-  // here for lack of a better place:
-  //
-  // 1 in 1000 probabilities (magnitude 3):
-  //     threshold for converting to conditional move
-  //     likelihood of null check failure if a null HAS been seen before
-  //     likelihood of slow path taken in library calls
-  //
-  // 1 in 10,000 probabilities (magnitude 4):
-  //     threshold for making an uncommon trap probability more extreme
-  //     threshold for for making a null check implicit
-  //     likelihood of needing a gc if eden top moves during an allocation
-  //     likelihood of a predicted call failure
-  //
-  // 1 in 100,000 probabilities (magnitude 5):
-  //     threshold for ignoring counts when estimating path frequency
-  //     likelihood of FP clipping failure
-  //     likelihood of catching an exception from a try block
-  //     likelihood of null check failure if a null has NOT been seen before
-  //
-  // Magic manifest probabilities such as 0.83, 0.7, ... can be found in
-  // gen_subtype_check() and catch_inline_exceptions().
+    // Other probabilities in use, but without a unique name, are documented
+    // here for lack of a better place:
+    //
+    // 1 in 1000 probabilities (magnitude 3):
+    //     threshold for converting to conditional move
+    //     likelihood of null check failure if a null HAS been seen before
+    //     likelihood of slow path taken in library calls
+    //
+    // 1 in 10,000 probabilities (magnitude 4):
+    //     threshold for making an uncommon trap probability more extreme
+    //     threshold for for making a null check implicit
+    //     likelihood of needing a gc if eden top moves during an allocation
+    //     likelihood of a predicted call failure
+    //
+    // 1 in 100,000 probabilities (magnitude 5):
+    //     threshold for ignoring counts when estimating path frequency
+    //     likelihood of FP clipping failure
+    //     likelihood of catching an exception from a try block
+    //     likelihood of null check failure if a null has NOT been seen before
+    //
+    // Magic manifest probabilities such as 0.83, 0.7, ... can be found in
+    // gen_subtype_check() and catch_inline_exceptions().
 
-  IfNode(Node* control, Node* bol, float p, float fcnt);
-  IfNode(Node* control, Node* bol, float p, float fcnt, AssertionPredicateType assertion_predicate_type);
+    IfNode(Node* control, Node* bol, float p, float fcnt);
+    IfNode(Node* control, Node* bol, float p, float fcnt, AssertionPredicateType assertion_predicate_type);
 
-  static IfNode* make_with_same_profile(IfNode* if_node_profile, Node* ctrl, BoolNode* bol);
+    static IfNode* make_with_same_profile(IfNode* if_node_profile, Node* ctrl, BoolNode* bol);
 
-  virtual int Opcode() const;
-  virtual bool pinned() const { return true; }
-  virtual const Type *bottom_type() const { return TypeTuple::IFBOTH; }
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual int required_outcnt() const { return 2; }
-  virtual const RegMask &out_RegMask() const;
-  Node* fold_compares(PhaseIterGVN* phase);
-  static Node* up_one_dom(Node* curr, bool linear_only = false);
-  bool is_zero_trip_guard() const;
-  Node* dominated_by(Node* prev_dom, PhaseIterGVN* igvn, bool pin_array_access_nodes);
-  ProjNode* uncommon_trap_proj(CallStaticJavaNode*& call, Deoptimization::DeoptReason reason = Deoptimization::Reason_none) const;
+    virtual int Opcode() const;
+    virtual bool pinned() const { return true; }
+    virtual const Type *bottom_type() const { return TypeTuple::IFBOTH; }
+    virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
+    virtual const Type* Value(PhaseGVN* phase) const;
+    virtual int required_outcnt() const { return 2; }
+    virtual const RegMask &out_RegMask() const;
+    Node* fold_compares(PhaseIterGVN* phase);
+    static Node* up_one_dom(Node* curr, bool linear_only = false);
+    bool is_zero_trip_guard() const;
+    Node* dominated_by(Node* prev_dom, PhaseIterGVN* igvn, bool pin_array_access_nodes);
+    ProjNode* uncommon_trap_proj(CallStaticJavaNode*& call, Deoptimization::DeoptReason reason = Deoptimization::Reason_none) const;
 
-  // Takes the type of val and filters it through the test represented
-  // by if_proj and returns a more refined type if one is produced.
-  // Returns null is it couldn't improve the type.
-  static const TypeInt* filtered_int_type(PhaseGVN* phase, Node* val, Node* if_proj);
+    // Takes the type of val and filters it through the test represented
+    // by if_proj and returns a more refined type if one is produced.
+    // Returns null is it couldn't improve the type.
+    static const TypeInt* filtered_int_type(PhaseGVN* phase, Node* val, Node* if_proj);
 
-  AssertionPredicateType assertion_predicate_type() const {
-    return _assertion_predicate_type;
-  }
+    AssertionPredicateType assertion_predicate_type() const {
+      return _assertion_predicate_type;
+    }
 
-#ifndef PRODUCT
-  virtual void dump_spec(outputStream *st) const;
-#endif
+  #ifndef PRODUCT
+    virtual void dump_spec(outputStream *st) const;
+  #endif
 
-  bool same_condition(const Node* dom, PhaseIterGVN* igvn) const;
-};
+    bool same_condition(const Node* dom, PhaseIterGVN* igvn) const;
+  };
 
 class RangeCheckNode : public IfNode {
 private:
