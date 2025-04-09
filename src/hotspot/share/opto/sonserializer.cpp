@@ -46,7 +46,6 @@ void SonSerializer::walk_nodes(Node* start) {
 
 
 void SonSerializer::set_csr() {
-  _isCSR=true;
   _graph=new CSRGraph(_root,_nodeNum,_edgeNum,_maxNodeIdx,C);
 }
 
@@ -56,76 +55,109 @@ void SonSerializer::compress_and_dump() {
 }
 
 
+bool SonSerializer::deserialize() {
+  return _graph->deserialize();
+}
+
 
 
 //______________________________________________Graph Storage_________________________________________________
 CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,uint maxNodeIdx,Compile* C)
   :_root(nd),_nodeNum(nodeNumber),_edgeNum(edgeNumber),_maxNodeIdx(maxNodeIdx),C(C)
 {
+
   Node* start=nd;
-  _oriOffset=(int*)C->comp_arena()->Amalloc(sizeof(int)*(1+_maxNodeIdx));
+  initialize_nodebyte();
+  fileStream* outputNode= new (mtCompiler) fileStream("node.txt","w");
+  _oriOffset=NEW_C_HEAP_ARRAY(int,1+_maxNodeIdx,mtCompiler);
   memset(_oriOffset,-1,sizeof(int)*(1+_maxNodeIdx));
-  _oriEdge=(int*)C->comp_arena()->Amalloc(sizeof(int)*_edgeNum);
-  _edgeIdx=(int*)C->comp_arena()->Amalloc(sizeof(int)*_edgeNum);
+  _oriEdge=NEW_C_HEAP_ARRAY(int,_edgeNum*2,mtCompiler);
+
+  //the slot index. The actual size of it (_edgeIdxSize) may smaller than _edgeNum.
+  _edgeIdx=NEW_C_HEAP_ARRAY(int, _edgeNum,mtCompiler);
+  //indicating if the idx is stored or not
+  //if _edgeIdxMask->get(node_oriId)=true then it mean the index of node_oriId is stored.
+  //you have to transfer the bitmask from store the oriId to newly-assigned Id for deserialization
   _edgeIdxMask=new Bitmask(C,_maxNodeIdx);
+
+
+  _idHash=NEW_C_HEAP_ARRAY(int,_nodeNum,mtCompiler);
+  _offset=NEW_C_HEAP_ARRAY(int,_nodeNum,mtCompiler);
 
   uint pstart=0;//for edge and offset
   uint pend=0;
 
-  uint maskp=0;
+  uint maskp=0;//
 
 //create the csr format.
   VectorSet visited;
   GrowableArray<Node *> nodeStack(Thread::current()->resource_area(), 0, 0, nullptr);
   nodeStack.push(start);
 
+  int offsetP=0;//directly reassign the id here. offsetP from 0 to nodeNum
   while (nodeStack.length() > 0) {//start traversing the graph
     Node* n = nodeStack.pop();
 
     if (visited.test_set(n->_idx))//test and set
       continue;
 
+    int opcode=n->Opcode();
+    outputNode->write((char*)&opcode,4);
+    int sz=*(_nodeBytes->get(opcode));
+    outputNode->write((char*)n,sz);
+
+
     if (need_input_index(n))
       //then u can directly lookup the bitmask to know if this node(with _idx) has stored its index
-      _edgeIdxMask->set(n->_idx);
+      _edgeIdxMask->set(offsetP);
     //if we need to store the indices, there are two cases:
-    //1.filled slots > empty slots, just set the empty slots as -1(like pointing to a null Node
+    //1.filled slots > empty slots, just set the empty slots as -1,dont store the idx
     //2.empty slots > filled slots, just to store the filled slots indices
-    bool nullflag=0;
+    bool nullflag=0;//this mean have to point to the null node(set the empty slots as -1
     uint empty=0;
     uint filled=0;
     for (uint i = 0; i < n->len(); i++)
       if (n->in(i) != nullptr) ++filled;
       else ++empty;
-    if (empty<filled) nullflag=true;
-
-
+    if (empty<filled) {
+      nullflag=true;
+      _edgeIdxMask->clear(offsetP);
+    }
 
     //traverse the output edges make sure no nodes are omitted
     for (uint i=0;i<n->outcnt();++i)
       nodeStack.push(n->raw_out(i));
 
-    for (uint i = 0; i < n->len(); i++) {//how to store the mask depends on how to decoding....
+    for (uint i = 0; i < n->len(); i++) {
       if (n->in(i) != nullptr) {
         nodeStack.push(n->in(i));
         _oriEdge[pend++]=n->in(i)->_idx;
-        if (_edgeIdxMask->get(n->_idx))
-          _edgeIdx[maskp++]=i;
+        if (_edgeIdxMask->get(offsetP))
+          _edgeIdx[maskp++]=i;//_edgeIdx and the _oriEdge and _edge actually preserve the same order, dont modify them for now
       }
       else if (nullflag) {//set the empty slot as -1
         _oriEdge[pend++]=-1;
       }
-
     }
-
-    _oriOffset[n->_idx]=pstart;
+    _offset[offsetP]=pstart;
+    _idHash[offsetP++]=n->_idx;
     pstart=pend;
   }
+  _actlEdgeNum=_edgeNum;//update the edgeNum and the actlEdgeNum because of the null node(the -1 edge)
+  _edgeNum=pend;//
   _edgeIdxSize=maskp;//totally how many indices are stored
+  outputNode->close();
 
 }
 CSRGraph::~CSRGraph() {
  // if (_edgeIdxMask) delete _edgeIdxMask;
+  if (_oriOffset) FREE_C_HEAP_ARRAY(int,_oriOffset);
+  if (_oriEdge) FREE_C_HEAP_ARRAY(int,_oriEdge);
+  if (_edgeIdx) FREE_C_HEAP_ARRAY(int,_edgeIdx);
+  if (_offset) FREE_C_HEAP_ARRAY(int,_offset);
+  if (_edge) FREE_C_HEAP_ARRAY(int,_edge);
+  if (_idHash) FREE_C_HEAP_ARRAY(int,_edge);
+
 }
 
 
@@ -133,11 +165,87 @@ void CSRGraph::compress_and_dump() {
   reassign_idx();
  // kbit_encoding();
   //kbit_decoding();
-  Huffman tmp(_edgeIdx,_edgeIdxSize,C);//use huffman to encode the index
-  tmp.encode();
   recover_idx();
+
 }
 
+
+bool CSRGraph::deserialize() {
+//the input is _offset and _edge
+//the bitmask? how should it work
+  //first create a graph.start from zero.
+  fileStream* f=new(mtCompiler) fileStream("node.txt");
+  int opcode=0;
+  Node* root=nullptr;
+  //construct(root,0,f);
+  GrowableArray<Node *> *nodeSet=new GrowableArray<Node *>(_nodeNum);
+  for (uint i=0;i<_nodeNum;++i) {
+    int opcode=0;
+    f->read((void*)&opcode,sizeof(int),1);
+    Node *node=nullptr;
+    switch (opcode) {
+      case Op_Root:
+        node=new RootNode();//you have to replace the _in and _out, or else they will point to original ones.
+        f->read((void*)node,sizeof(char),*(_nodeBytes->get(Op_Root)));
+        break;
+      case Op_Start:
+        node=new StartNode(nullptr,nullptr);//need root node and a domain;
+        f->read((void*)node,sizeof(char),*(_nodeBytes->get(Op_Start)));
+        break;
+      case Op_Con:
+        node=new ConNode(nullptr);
+        f->read((void*)node,sizeof(char),*(_nodeBytes->get(Op_Con)));
+        break;
+      case Op_Parm:
+        node=new ParmNode(nullptr,0);
+        f->read((void*)node,sizeof(char),*(_nodeBytes->get(Op_Parm)));
+        break;
+      case Op_AddI:
+        node= new AddINode(nullptr,nullptr);
+        f->read((void*)node,sizeof(char),*(_nodeBytes->get(Op_AddI)));
+      case Op_Return:
+        node=new ReturnNode(0,nullptr,nullptr,nullptr,nullptr,nullptr);
+        f->read((void*)node,sizeof(char),*(_nodeBytes->get(Op_Return )));
+    }
+    nodeSet->at(i)=node;
+  }
+  //cover the in and out
+  uint pIdx=0;//index rhe edgeIdx
+  for (uint i=0;i<_nodeNum;++i) {
+    uint sz= (i==_nodeNum-1?_edgeNum:_offset[i+1]) -_offset[i];
+    uint pEdge=_offset[i];
+
+    if (_edgeIdxMask->get(i)) {//the idx is stored, great!
+      //first get the sizeof the input
+      uint pEdge=_offset[i];//indexes the edge array
+      for (uint j=pIdx;j<pIdx+sz;++j) {
+        nodeSet->at(i)->init_req(_edgeIdx[j],nodeSet->at(_edge[pEdge++]));
+      }
+      pIdx+=sz;
+    }
+    else {//nooooooo, the idx is not stored, so you have to analysis.
+      //two cases:
+      //1.add,sub...
+      //2.-1.
+      if (need_input_index(nodeSet->at(i))==false) {//add sub...
+        if (sz==3)
+          nodeSet->at(i)->init_req(0,nodeSet->at(_edge[pEdge++]));
+        nodeSet->at(i)->init_req(0,nodeSet->at(_edge[pEdge]));
+        nodeSet->at(i)->init_req(0,nodeSet->at(_edge[pEdge+1]));
+      }
+      else {//-1.
+        for (uint j=0;j<sz;++j)
+          if (_edge[j+pEdge]!=-1)
+          nodeSet->at(i)->init_req(j,nodeSet->at(_edge[pEdge+j]));
+      }
+    }
+  }
+
+
+  C->set_root(static_cast<RootNode*>(nodeSet->at(0)));
+  return 0;
+
+}
 
 bool CSRGraph::need_input_index(Node *node) {
     switch (node->Opcode()) {
@@ -152,11 +260,6 @@ bool CSRGraph::need_input_index(Node *node) {
       default:return true;
     }
 }
-
-
-
-
-
 //return i, _oriOffset[i] is the lowest upper bound of num.
 //_oriOffset[i] cannot be equal to num.
 int CSRGraph::find_lowest_upper_bound(const int num,const bool equal) const {
@@ -169,12 +272,12 @@ int CSRGraph::find_lowest_upper_bound(const int num,const bool equal) const {
   return idx;
 }
 int CSRGraph::lookup_idx_hash(const int old) const {
+  if (old==-1) return -1;
   for (uint i=0;i<_nodeNum;++i)
-    if (old==_idxHash[i])
+    if (old==_idHash[i])
       return i;
   return -1;
 }
-
 
 //The first step, only ensure the _oriOffset[i+1]-_oriOffset[i] is the outEdgeNum of node i.
 //To look up the very rudimentary hash table, new->old O(1), old->new O(n)
@@ -183,42 +286,38 @@ int CSRGraph::lookup_idx_hash(const int old) const {
 
 void CSRGraph::reassign_idx(){
   //construct _offset and _idxHash, O(n^2)
-  _idxHash=(int*)C->comp_arena()->Amalloc(sizeof(int)*_nodeNum);
-  _offset=(int*)C->comp_arena()->Amalloc(sizeof(int)*_edgeNum);
-  _idxHash[0]=find_lowest_upper_bound(0,1);
-  _offset[0]=0;
+  //_idHash=NEW_C_HEAP_ARRAY(int,_nodeNum,mtCompiler);
+  //_offset=NEW_C_HEAP_ARRAY(int,_edgeNum,mtCompiler);
 
-  for (uint p=1;p<_nodeNum;++p) {
-    _idxHash[p]=find_lowest_upper_bound(_oriOffset[_idxHash[p-1]],0);
-    _offset[p]=_oriOffset[_idxHash[p]];
-  }
+  //_idHash[0]=find_lowest_upper_bound(0,1);
+  //_offset[0]=0;
 
+  //for (uint p=1;p<_nodeNum;++p) {
+  //  _idHash[p]=find_lowest_upper_bound(_oriOffset[_idHash[p-1]],0);
+  //  _offset[p]=_oriOffset[_idHash[p]];
+  //}
   //modify the edge to replace the old indices with the newly-assigned indices, O(n^2)
   //the _edge can be deleted after verification.
-
-  _edge=(int*)C->comp_arena()->Amalloc(sizeof(int)*_edgeNum);
+  _edge=NEW_C_HEAP_ARRAY(int,_edgeNum,mtCompiler);
   for (uint i=0;i<_edgeNum;++i)
     _edge[i]=lookup_idx_hash(_oriEdge[i]);
-
 }
 //for now, just to be used to validate the correctness, compared with _oriOffset and _edge.
 void CSRGraph::recover_idx() {
   bool good=true;
   //validate edge
   for (uint i=0;i<_edgeNum;++i)
-    if (_oriEdge[i]!=_idxHash[_edge[i]]) {
+    if (_oriEdge[i]!=_idHash[_edge[i]]) {
       good=false;
       break;
     }
   //validate the idx
   //how to get _oriOffset with _offset and _idxHash?
   for (uint i=0;i<_nodeNum;++i)
-    if (_oriOffset[_idxHash[i]]!=_offset[i]) {
+    if (_oriOffset[_idHash[i]]!=_offset[i]) {
       good =false;
       break;
     }
-
-
   if (!good) {
 
     outputStream* _output = new (mtCompiler) fileStream("validate.txt","w");
@@ -307,133 +406,21 @@ void CSRGraph::kbit_decoding() {//in-place recover
 }
 
 
+void CSRGraph::initialize_nodebyte() {
+  _nodeBytes=new ResourceHashtable<int, int>();
+  _nodeBytes->put(Op_Root,sizeof(RootNode));
+  _nodeBytes->put(Op_Con,sizeof(ConNode));
+  _nodeBytes->put(Op_Start,sizeof(StartNode));
+  _nodeBytes->put(Op_ConI,sizeof(ConINode));
+  _nodeBytes->put(Op_Parm,sizeof(ParmNode));
+  _nodeBytes->put(Op_AddI,sizeof(AddINode));
+  _nodeBytes->put(Op_Return,sizeof(ReturnNode));
+
+
+}
+
 
 //______________________________________________Auxiliary Class_________________________________________________
-MinHeap::MinHeap(uint *data, uint *freqs, uint n,Compile* C):_size(n),C(C) {
-  _heap= (TreeNode**)C->comp_arena()->Amalloc(sizeof(TreeNode*)*n);
-  for (uint i = 0; i < n; i++)
-    _heap[i] = new TreeNode(data[i], freqs[i]);
-
-  for (int i = _size /2 - 1; i >= 0; i--)
-    heapify(i);
-
-}
-
-void MinHeap::heapify(uint i) {
-  uint smallest = i, left = (i<<1) + 1, right = (i<<1) + 2;
-  if (left < _size && _heap[left]->freq < _heap[smallest]->freq)
-    smallest = left;
-  if (right < _size && _heap[right]->freq < _heap[smallest]->freq)
-    smallest = right;
-  if (smallest != i) {
-    TreeNode* temp = _heap[i];
-    _heap[i] = _heap[smallest];
-    _heap[smallest] = temp;
-    heapify(smallest);
-  }
-
-}
-
-
-TreeNode* MinHeap::get_top() {
-  TreeNode* min = _heap[0];
-  _heap[0] = _heap[_size--];
-  heapify(0);
-  return min;
-}
-
-void MinHeap::insert(TreeNode* node) {
-  uint i = ++_size;
-  while (i && node->freq < _heap[(i - 1) / 2]->freq) {
-    _heap[i] = _heap[(i - 1) / 2];
-    i = (i - 1) / 2;
-  }
-  _heap[i] = node;
-}
-
-
-TreeNode *MinHeap::build_huffman_tree() {
-  while (_size>1) {
-    TreeNode* left = get_top();
-    TreeNode* right = get_top();
-    TreeNode* newNode = new TreeNode(-1, left->freq + right->freq);
-    newNode->left = left;
-    newNode->right = right;
-    insert(newNode);
-  }
-  return get_top();
-}
-
-
-Huffman::Huffman(int* data, uint size,Compile* C) :C(C){
-  int max=INT_MIN;
-  for (uint i=0;i<size;++i)
-    max=data[i]>max?data[i]:max;
-  int *hash=(int*)C->comp_arena()->Amalloc(sizeof(int)*max);
-  memset(hash,-1,sizeof(uint)*max);
-
-  for (uint i=0;i<size;++i)
-    ++hash[data[i]];
-
-  uint num=0;
-  for (uint i=0;i<size;++i)
-    if (hash[i]!=-1) ++num;
-
-  uint* value=(uint*)C->comp_arena()->Amalloc(sizeof(uint)*num);
-  uint* freq=(uint*)C->comp_arena()->Amalloc(sizeof(uint)*num);
-
-  for (uint i=0;i<size;++i)
-    if (hash[i]!=-1) {
-      value[i]=i;
-      freq[i]=hash[i];
-    }
-
-  _heap=new MinHeap(value,freq,num,C);
-  _root=_heap->build_huffman_tree();
-  C->comp_arena()->Afree(hash,sizeof(uint)*max);
-  C->comp_arena()->Afree(value,sizeof(uint)*num);
-  C->comp_arena()->Afree(freq,sizeof(uint)*num);
-
-}
-
-void Huffman::code_gen(TreeNode *node, uint len, ushort data) {
-  if (node==nullptr) return;//left edge 1, right edge 0
-  if (node->left) code_gen(node->left, len+1,(data<<1)|0x1);
-  if (node->right) code_gen(node->right,len+1,data<<1);
-  if (!node->left&&!node->right) {
-    codes[node->value].data=data;
-    codes[node->value].len=len;
-    _huffmanCodeLen+=len;
-  }
-  return;
-}
-
-uint Huffman::encode() {//now, only return the bytes number
-  _huffmanCodeLen=0;
-  code_gen(_root,0,0);
-  return _huffmanCodeLen;
-}
-
-uint Huffman::decode() {
-
-//now it is unnecessary as if I just want to know how much the graph can be compressed.
-  //you can get the huffmancode and traverse the tree to decoding
-return 0;
-}
-
-
-void HeuristicCSRGraph::optimizeIndices(int *Offset, int *Edge) {
-
-
-//bfs? arrange interconnected nodes in adjacent positions to reduce differences.
-//sorting? the node has most output assign the smallest values?
-  //
-  //Simulated Annealing? too complex/..
-
-
-}
-
-
 
 
 

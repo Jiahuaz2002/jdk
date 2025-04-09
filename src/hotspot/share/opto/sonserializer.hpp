@@ -22,33 +22,33 @@
 #include "runtime/threadSMR.hpp"
 #include "utilities/stringUtils.hpp"
 #include <bits/stdint-intn.h>
+#include<opto/rootnode.hpp>
 class Graph;
 class CSRGraph;
 class Bitmask;
-class Huffman;
 //__________________________________________________Control_____________________________________________________
 class SonSerializer:public ResourceObj{
 private:
+	Compile* C;
+
+
 	Node* _root=nullptr;//coding style! add underscores
 	outputStream*_output;
 	char _buffer[512];
 	uint _nodeNum=0;
 	uint _maxNodeIdx=0;
 	uint _edgeNum=0;
-	bool _isCSR=false;
-	Compile* C;
 	Graph * _graph=nullptr;
 
 public:
 	void set_csr();
-
 	SonSerializer(Compile* compile, const char* file_name=nullptr);
+
 	~SonSerializer();
 	void walk_nodes(Node* root);
 	void set_compile(Compile* compile) {C = compile; }
 	void compress_and_dump();
-
-
+	bool deserialize();
 };
 //______________________________________________Graph Storage_________________________________________________
 class Graph:public ResourceObj {
@@ -56,6 +56,7 @@ private:
 public:
 //	virtual void setCompressionStrategy()=0;
 	virtual void compress_and_dump()=0;
+	virtual bool deserialize()=0;
 
 };
 //CSR format
@@ -65,26 +66,29 @@ private:
 	int *_oriOffset=nullptr;//_oriOffset[idx] points to the start of the outgoing edges. Original.
 	int *_oriEdge=nullptr;//_oriEgde[_oriOffset[idx]]~_oriEdge[_oriOffset[lowest upper bound of idx]] is the outgoing edges of idx.
 
-
 	int *_offset=nullptr;//after index reassign.
 	int *_edge=nullptr;//for current phase, just for validation.
 
 	int *_edgeIdx=nullptr;//slot index
-	Bitmask* _edgeIdxMask;
+	Bitmask* _edgeIdxMask;//
 	uint _edgeIdxSize;//actual num of the stored idx
 
+	int *_idHash=nullptr;//size=_nodeNum, _idxHash[newIdx]=oldIdx.
 
-	int *_idxHash=nullptr;//size=_nodeNum, _idxHash[newIdx]=oldIdx.
 	uint _nodeNum;
-	uint _edgeNum;
+	uint _edgeNum;//the edge num = _actlEdgeNum + -1( the empty slot)
+	uint _actlEdgeNum;//the actual valid edgenum
 	uint _maxNodeIdx;//idx starts from 0. And _oriOffset[_maxNodeIdx] should be valid.
 	Compile* C;
 
 	uint _kbitBytesLen;//_after kbit-encoding the Bytes length of the _offset. _kbitBytesLen-1 is the final index.
 
+	ResourceHashtable<int,int>* _nodeBytes;//the dictionary of node size
+
 public:
 	CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,uint maxNodeIdx,Compile* C);
 	void compress_and_dump()override;
+	bool deserialize()override;
 	~CSRGraph();
 
 
@@ -96,11 +100,14 @@ private:
 
 	bool need_input_index(Node* node);
 
+	void initialize_nodebyte();
+	void construct(Node* root,int curId,fileStream* f);
 	//uint dumpNodeAttributes();//input is the root node
 	void reassign_idx ();
 	void recover_idx ();
 	void kbit_encoding();
 	void kbit_decoding();
+
 
 
 };
@@ -121,83 +128,7 @@ public:
 	void set(uint index){_mask[index>>3]|=(1 << (index % 8));}
 	void clear(uint index){_mask[index>>3] &= ~(1 << (index % 8));}
 	bool get(uint index) const { return _mask[index>>3] & (1 << (index % 8)); }
-
 };
-
-
-class TreeNode:public ResourceObj {
-public:
-	uint value,freq;
-	TreeNode* left, *right ;
-	TreeNode(uint v,uint f):value(v),freq(f),left(nullptr),right(nullptr){}
-};
-
-class MinHeap:public ResourceObj {
-private:
-	TreeNode** _heap;//array
-	uint _size;
-	//maintain heap
-	Compile* C;
-	void heapify(uint i);
-public:
-	MinHeap(uint* data, uint* freqs,uint n,Compile* C);
-	TreeNode* get_top();
-	void insert(TreeNode* node);
-	TreeNode* build_huffman_tree();
-
-
-};
-
-
-class Huffman:public ResourceObj {
-private:
-	Compile *C;
-	TreeNode * _root=nullptr;
-	MinHeap* _heap=nullptr;
-	uint _huffmanCodeLen=0;
-	struct Bitcode {
-		uint len;
-		ushort data;
-	};
-	Bitcode codes[256];//the maximum slots idx?
-	void code_gen(TreeNode* root,uint len,ushort data);
-
-
-public:
-	Huffman(int* data, uint size, Compile* C);//
-	uint encode();
-	uint decode();
-
-
-};
-
-
-class HeuristicCSRGraph :public ResourceObj{
-private:
-	int* _offset;
-	int* _edge;
-	uint _nodeNum;
-	uint _edgeNum;
-
-public:
-	HeuristicCSRGraph(int* offset, int* edge, int numNodes, int numEdges);
-	~HeuristicCSRGraph();
-	int* getOffset() const;
-	int* getEdge() const;
-	int getNodeNum() const;
-	int getEdgeNum() const;
-	void printGraph() const;
-private:
-	void optimizeIndices(int* oriOffset, int* oriEdge);
-};
-
-
-
-
-
-
-
-
 
 
 #endif //SONSERIALIZER_H

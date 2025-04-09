@@ -856,9 +856,11 @@ Compile::Compile( ciEnv* ci_env, ciMethod* target, int osr_bci,
   a->set_csr();
 
   a->compress_and_dump();
-
-
+  a->deserialize();
   //a->dump();
+#ifndef PRODUCT
+    _igv_printer->print_graph("reconstruct");
+#endif
 
   if (failing())  return;
   NOT_PRODUCT( verify_graph_edges(); )
