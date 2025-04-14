@@ -98,7 +98,7 @@ private:
 	int lookup_idx_hash( int old)const ;
 	void set_bit(u_int8_t* obj, int bit);//bit from 0->7, set bit from 0->1
 
-	bool need_input_index(Node* node);
+	bool preliminary_known_node(Node* node);
 
 	void initialize_nodebyte();
 	void construct(Node* root,int curId,fileStream* f);
