@@ -223,16 +223,14 @@ bool CSRGraph::deserialize() {
   uint pIdx=0;//index the edgeIdx
   for (uint i=0;i<_nodeNum;++i) {
 
-    //Node **nodeArray=reinterpret_cast<Node**>(*((char*)nodeSet->at(i)+8));
-    //for (uint j=0;j<nodeSet->at(i)->req();++j)
-      //nodeArray[0]=nullptr;
+
     // the _in and _out are pointers which means they are still point to the previous array, which is not good.
 
     Node*** in_tmp=reinterpret_cast<Node***>((char*)nodeSet->at(i)+8);//this, point to the original value,you have to modify the value of _in that is *(&_in)
     Node*** out_tmp= reinterpret_cast<Node***>((char*)nodeSet->at(i)+16) ;
     *in_tmp=//the offset of _in is 8,of _out is 16,of _outcnt(4bytes) is 32
-      (Node **) ((char *) (C->node_arena()->AmallocWords( nodeSet->at(i)->req()* sizeof(void*))));
-    memset(*in_tmp, 0, nodeSet->at(i)->req() * sizeof(Node*));
+      (Node **) ((char *) (C->node_arena()->AmallocWords( nodeSet->at(i)->len()* sizeof(void*))));
+    memset(*in_tmp, 0, nodeSet->at(i)->len() * sizeof(Node*));
     *out_tmp=
       (Node **) ((char *) (C->node_arena()->AmallocWords(nodeSet->at(i)->outcnt() * sizeof(void*))));
     memset(*out_tmp, 0, nodeSet->at(i)->outcnt() * sizeof(Node*));
@@ -273,6 +271,8 @@ bool CSRGraph::deserialize() {
 
 }
 
+
+//there should be another case: that is compact and the only thing we need to know is the node's input size(to be done
 bool CSRGraph::preliminary_known_node(Node *node) {
     switch (node->Opcode()) {
       case Op_AddI: case Op_AddL: case Op_AddF: case Op_AddD:case Op_AddP:

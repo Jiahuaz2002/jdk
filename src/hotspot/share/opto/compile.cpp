@@ -859,6 +859,7 @@ Compile::Compile( ciEnv* ci_env, ciMethod* target, int osr_bci,
   a->deserialize();
   //a->dump();
 #ifndef PRODUCT
+if (should_print_igv(1))
     _igv_printer->print_graph("reconstruct");
 #endif
 
