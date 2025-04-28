@@ -23,6 +23,19 @@
 #include "utilities/stringUtils.hpp"
 #include <bits/stdint-intn.h>
 #include<opto/rootnode.hpp>
+#include "opto/movenode.hpp"
+#include "opto/locknode.hpp"
+#include "opto/castnode.hpp"
+#include "opto/convertnode.hpp"
+#include "opto/intrinsicnode.hpp"
+#include "opto/countbitsnode.hpp"
+#include "opto/vectornode.hpp"
+#include"gc/shenandoah/c2/shenandoahSupport.hpp"
+#include "opto/memnode.hpp"
+#include "opto/narrowptrnode.hpp"
+#include "opto/arraycopynode.hpp"
+
+#define NO_OUT_ARRAY ((Node**)-1)
 class Graph;
 class CSRGraph;
 class Bitmask;

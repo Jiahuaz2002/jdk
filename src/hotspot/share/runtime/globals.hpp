@@ -1993,6 +1993,8 @@ const int ObjectAlignmentInBytes = 8;
   product(bool, UseThreadsLockThrottleLock, true, DIAGNOSTIC,               \
           "Use an extra lock during Thread start and exit to alleviate"     \
           "contention on Threads_lock.")                                    \
+  product(bool, EnableDeserializeCall, false, DIAGNOSTIC,                   \
+          "Enable a->deserialize() call")                                    \
 
 // end of RUNTIME_FLAGS
 

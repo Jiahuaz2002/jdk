@@ -367,6 +367,7 @@ void Matcher::match( ) {
   // Recursively match trees from old space into new space.
   // Correct leaves of new-space Nodes; they point to old-space.
   _visited.clear();
+
   Node* const n = xform(C->top(), live_nodes);
   if (C->failing()) return;
   C->set_cached_top_node(n);
@@ -1729,7 +1730,7 @@ Node* Matcher::Label_Root(const Node* n, State* svec, Node* control, Node*& mem)
         // at the root of this tree or another LoadNode in one of the children).
         ((mem!=(Node*)1) && m->is_Load() && m->in(MemNode::Memory) != mem) ||
         // Can NOT include the match of a subtree when its memory state
-        // is used by any of the other subtrees
+        // is used by any of the other subtremaes
         (input_mem == NodeSentinel) ) {
       // Print when we exclude matching due to different memory states at input-loads
       if (PrintOpto && (Verbose && WizardMode) && (input_mem == NodeSentinel)

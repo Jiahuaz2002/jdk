@@ -856,7 +856,10 @@ Compile::Compile( ciEnv* ci_env, ciMethod* target, int osr_bci,
   a->set_csr();
 
   a->compress_and_dump();
-  a->deserialize();
+
+  if (EnableDeserializeCall) {
+    a->deserialize();
+  }
   //a->dump();
 #ifndef PRODUCT
 if (should_print_igv(1))

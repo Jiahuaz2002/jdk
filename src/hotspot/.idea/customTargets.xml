@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="c5cef668-5d89-4423-90a4-0e389fd0ef16" name="hotspot-slow" defaultType="TOOL">
+      <configuration id="9c310b4c-2a99-47ee-85c5-83a9bf7dae96" name="hotspot-slow">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_hotspot-slow" />
+        </build>
+        <clean type="TOOL">
+          <tool actionId="Tool_External Tools_hotspot-clean" />
+        </clean>
+      </configuration>
+    </target>
+  </component>
+</project>
