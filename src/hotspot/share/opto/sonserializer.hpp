@@ -34,6 +34,8 @@
 #include "opto/memnode.hpp"
 #include "opto/narrowptrnode.hpp"
 #include "opto/arraycopynode.hpp"
+#include "opto/mathexactnode.hpp"
+
 
 #define NO_OUT_ARRAY ((Node**)-1)
 class Graph;
@@ -96,13 +98,14 @@ private:
 
 	uint _kbitBytesLen;//_after kbit-encoding the Bytes length of the _offset. _kbitBytesLen-1 is the final index.
 
-	ResourceHashtable<int,int>* _nodeBytes;//the dictionary of node size
+
 
 public:
 	CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,uint maxNodeIdx,Compile* C);
 	void compress_and_dump()override;
 	bool deserialize()override;
 	~CSRGraph();
+	ResourceHashtable<int,int>* _nodeBytes;//the dictionary of node size
 
 
 private:
