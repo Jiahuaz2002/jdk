@@ -51,7 +51,6 @@ private:
 	outputStream*_output;
 	char _buffer[512];
 	uint _nodeNum=0;
-	uint _maxNodeIdx=0;
 	uint _edgeNum=0;
 	Graph * _graph=nullptr;
 
@@ -78,7 +77,6 @@ public:
 class CSRGraph:public Graph {
 private:
 	Node* _root=nullptr;
-	int *_oriOffset=nullptr;//_oriOffset[idx] points to the start of the outgoing edges. Original.
 	int *_oriEdge=nullptr;//_oriEgde[_oriOffset[idx]]~_oriEdge[_oriOffset[lowest upper bound of idx]] is the outgoing edges of idx.
 
 	int *_offset=nullptr;//after index reassign.
@@ -93,7 +91,8 @@ private:
 	uint _nodeNum;
 	uint _edgeNum;//the edge num = _actlEdgeNum + -1( the empty slot)
 	uint _actlEdgeNum;//the actual valid edgenum
-	uint _maxNodeIdx;//idx starts from 0. And _oriOffset[_maxNodeIdx] should be valid.
+
+
 	Compile* C;
 
 	uint _kbitBytesLen;//_after kbit-encoding the Bytes length of the _offset. _kbitBytesLen-1 is the final index.
@@ -101,7 +100,7 @@ private:
 
 
 public:
-	CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,uint maxNodeIdx,Compile* C);
+	CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,Compile* C);
 	void compress_and_dump()override;
 	bool deserialize()override;
 	~CSRGraph();
@@ -113,14 +112,8 @@ private:
 	int find_lowest_upper_bound(  int num,  bool equal)const ;
 	int lookup_idx_hash( int old)const ;
 	void set_bit(u_int8_t* obj, int bit);//bit from 0->7, set bit from 0->1
-
 	bool preliminary_known_node(Node* node);
-
 	void initialize_nodebyte();
-	void construct(Node* root,int curId,fileStream* f);
-	//uint dumpNodeAttributes();//input is the root node
-	void reassign_idx ();
-	void recover_idx ();
 	void kbit_encoding();
 	void kbit_decoding();
 

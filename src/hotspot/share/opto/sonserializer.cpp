@@ -31,7 +31,7 @@ void SonSerializer::walk_nodes(Node* start) {
       continue;
 
     ++_nodeNum;
-    _maxNodeIdx=n->_idx>_maxNodeIdx?n->_idx:_maxNodeIdx;
+
   //  for (DUIterator i = n->outs(); n->has_out(i); i++)
     //    nodeStack.push(n->out(i));
     for (uint i=0;i<n->outcnt();++i)
@@ -46,7 +46,7 @@ void SonSerializer::walk_nodes(Node* start) {
 
 
 void SonSerializer::set_csr() {
-  _graph=new CSRGraph(_root,_nodeNum,_edgeNum,_maxNodeIdx,C);
+  _graph=new CSRGraph(_root,_nodeNum,_edgeNum,C);
 }
 
 void SonSerializer::compress_and_dump() {
@@ -62,24 +62,22 @@ bool SonSerializer::deserialize() {
 
 
 //______________________________________________Graph Storage_________________________________________________
-CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,uint maxNodeIdx,Compile* C)
-  :_root(nd),_nodeNum(nodeNumber),_edgeNum(edgeNumber),_maxNodeIdx(maxNodeIdx),C(C)
+CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,Compile* C)
+  :_root(nd),_nodeNum(nodeNumber),_edgeNum(edgeNumber),C(C)
 {
 
   Node* start=nd;
   initialize_nodebyte();
   fileStream* outputNode= new (mtCompiler) fileStream("node.txt","w");
-  _oriOffset=NEW_C_HEAP_ARRAY(int,1+_maxNodeIdx,mtCompiler);
-  memset(_oriOffset,-1,sizeof(int)*(1+_maxNodeIdx));
-  _oriEdge=NEW_C_HEAP_ARRAY(int,_edgeNum*2,mtCompiler);
+
+  _oriEdge=NEW_C_HEAP_ARRAY(int,_edgeNum<<12,mtCompiler);
 
   //the slot index. The actual size of it (_edgeIdxSize) may smaller than _edgeNum.
   _edgeIdx=NEW_C_HEAP_ARRAY(int, _edgeNum,mtCompiler);
   //indicating if the idx is stored or not
   //if _edgeIdxMask->get(node_oriId)=true then it mean the index of node_oriId is stored.
   //you have to transfer the bitmask from store the oriId to newly-assigned Id for deserialization
-  _edgeIdxMask=new Bitmask(C,_maxNodeIdx);
-
+  _edgeIdxMask=new Bitmask(C,_nodeNum);
 
   _idHash=NEW_C_HEAP_ARRAY(int,_nodeNum,mtCompiler);
   _offset=NEW_C_HEAP_ARRAY(int,_nodeNum,mtCompiler);
@@ -143,27 +141,25 @@ CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,uint maxNodeIdx,Comp
   _edgeIdxSize=maskp;//totally how many indices are stored
   outputNode->close();
 
+  _edge=NEW_C_HEAP_ARRAY(int,_edgeNum,mtCompiler);
+  for (uint i=0;i<_edgeNum;++i)
+    _edge[i]=lookup_idx_hash(_oriEdge[i]);
+
+  FREE_C_HEAP_ARRAY(int,_oriEdge);
+
 }
 CSRGraph::~CSRGraph() {
- // if (_edgeIdxMask) delete _edgeIdxMask;
-  if (_oriOffset) FREE_C_HEAP_ARRAY(int,_oriOffset);
-  if (_oriEdge) FREE_C_HEAP_ARRAY(int,_oriEdge);
   if (_edgeIdx) FREE_C_HEAP_ARRAY(int,_edgeIdx);
   if (_offset) FREE_C_HEAP_ARRAY(int,_offset);
   if (_edge) FREE_C_HEAP_ARRAY(int,_edge);
   if (_idHash) FREE_C_HEAP_ARRAY(int,_edge);
-
 }
 
 
 void CSRGraph::compress_and_dump() {
-  reassign_idx();
- // kbit_encoding();
-  //kbit_decoding();
-  recover_idx();
+
 
 }
-
 
 bool CSRGraph::deserialize() {
 //the input is _offset and _edge
@@ -257,56 +253,13 @@ bool CSRGraph::preliminary_known_node(Node *node) {
       default:return false;
     }
 }
-//return i, _oriOffset[i] is the lowest upper bound of num.
-//_oriOffset[i] cannot be equal to num.
-int CSRGraph::find_lowest_upper_bound(const int num,const bool equal) const {
-  int low=INT_MAX,idx=-1;
-  for (uint i=0;i<=_maxNodeIdx;++i)
-    if (((equal&&_oriOffset[i]>=num)||(!equal&&_oriOffset[i]>num))&&_oriOffset[i]<low) {
-      low=_oriOffset[i];
-      idx=static_cast<int>(i);
-    }
-  return idx;
-}
+
 int CSRGraph::lookup_idx_hash(const int old) const {
   if (old==-1) return -1;
   for (uint i=0;i<_nodeNum;++i)
     if (old==_idHash[i])
       return i;
   return -1;
-}
-
-//The first step, only ensure the _oriOffset[i+1]-_oriOffset[i] is the outEdgeNum of node i.
-//To look up the very rudimentary hash table, new->old O(1), old->new O(n)
-//Restore:to be written...
-//The hash table Can be further optimize by compressing bit.(after ask how many num son can reach...
-
-void CSRGraph::reassign_idx(){
-  _edge=NEW_C_HEAP_ARRAY(int,_edgeNum,mtCompiler);
-  for (uint i=0;i<_edgeNum;++i)
-    _edge[i]=lookup_idx_hash(_oriEdge[i]);
-}
-//for now, just to be used to validate the correctness, compared with _oriOffset and _edge.
-void CSRGraph::recover_idx() {
-  bool good=true;
-  //validate edge
-  for (uint i=0;i<_edgeNum;++i)
-    if (_oriEdge[i]!=_idHash[_edge[i]]) {
-      good=false;
-      break;
-    }
-  //validate the idx
-  //how to get _oriOffset with _offset and _idxHash?
-  for (uint i=0;i<_nodeNum;++i)
-    if (_oriOffset[_idHash[i]]!=_offset[i]) {
-      good =false;
-      break;
-    }
-  if (!good) {
-
-    outputStream* _output = new (mtCompiler) fileStream("validate.txt","w");
-    _output->print_cr("incorrect!!!!");
-  }
 }
 
 void CSRGraph::set_bit(u_int8_t *obj, const int bit) {
@@ -391,7 +344,3 @@ void CSRGraph::kbit_decoding() {//in-place recover
 
 
 //______________________________________________Auxiliary Class_________________________________________________
-
-
-
-
