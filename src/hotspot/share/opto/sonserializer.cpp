@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <bits/ctype_base.h>
 
+#include "runtime/globals_extension.hpp"
+
 SonSerializer::SonSerializer(Compile* compile,const char* file_name){
 	_output = new (mtCompiler) fileStream(file_name,"w");
 	_root = (Node*)compile->root();
@@ -15,9 +17,8 @@ SonSerializer::SonSerializer(Compile* compile,const char* file_name){
 
 SonSerializer:: ~SonSerializer()
 {
-	if (_root) delete _root;
-	if(_output) delete _output;
-	
+  if(_output) delete _output;
+
 }
 
 void SonSerializer::walk_nodes(Node* start) {
@@ -57,6 +58,7 @@ void SonSerializer::compress_and_dump() {
 
 bool SonSerializer::deserialize() {
   return _graph->deserialize();
+
 }
 
 
@@ -68,9 +70,17 @@ CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,Compile* C)
 
   Node* start=nd;
   initialize_nodebyte();
-  fileStream* outputNode= new (mtCompiler) fileStream("node.txt","w");
+  set_vptr_table(_root);
+  fileStream* f= new (mtCompiler) fileStream("node.txt","w");
+  f->write((char*)&_vptrNum,2);//use a space to divide vt pointers and nodes
+  for (ushort i=0;i<512;++i) {
+    if (_vptrTable[i]!=nullptr) {
+      f->write((char*)&i,2);
+      f->write((char*)&_vptrTable[i],8);
+    }
+  }
 
-  _oriEdge=NEW_C_HEAP_ARRAY(int,_edgeNum<<12,mtCompiler);
+  _oriEdge=NEW_C_HEAP_ARRAY(int,_edgeNum<<1,mtCompiler);
 
   //the slot index. The actual size of it (_edgeIdxSize) may smaller than _edgeNum.
   _edgeIdx=NEW_C_HEAP_ARRAY(int, _edgeNum,mtCompiler);
@@ -99,11 +109,8 @@ CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,Compile* C)
     if (visited.test_set(n->_idx))//test and set
       continue;
 
-    int opcode=n->Opcode();
-    outputNode->write((char*)&opcode,4);
-    int sz=*(_nodeBytes->get(opcode));
-    outputNode->write((char*)n,sz);
 
+    store_node(n,f);//write the node to file
 //preminary:no need to store anything
     //not preminary&&filled<empty need to store idx
     //not preminary&&filled>empty need to store -1
@@ -139,7 +146,7 @@ CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,Compile* C)
   _actlEdgeNum=_edgeNum;//update the edgeNum and the actlEdgeNum because of the null node(the -1 edge)
   _edgeNum=pend;//
   _edgeIdxSize=maskp;//totally how many indices are stored
-  outputNode->close();
+  f->close();
 
   _edge=NEW_C_HEAP_ARRAY(int,_edgeNum,mtCompiler);
   for (uint i=0;i<_edgeNum;++i)
@@ -166,20 +173,27 @@ bool CSRGraph::deserialize() {
 //the bitmask? how should it work
   //first create a graph.start from zero.
   fileStream* f=new(mtCompiler) fileStream("node.txt","r");
-  int opcode=0;
+
   Node* root=nullptr;
   //construct(root,0,f);
   GrowableArray<Node *> *nodeSet=new GrowableArray<Node *>(_nodeNum,_nodeNum,nullptr);
+  ushort opcode=0;
+  f->read((void*)&_vptrNum,sizeof(char),2);
+  for (int i=0;i<_vptrNum;++i) {
+    f->read((void*)&opcode,sizeof(char),2);
+    f->read((void*)&(_vptrTable[opcode]),sizeof(char),8);
+  }
+
   for (uint i=0;i<_nodeNum;++i) {
-    int opcode=0;
-    f->read((void*)&opcode,sizeof(char),4);
+    opcode=0;
+    f->read((void*)&opcode,sizeof(char),2);
     Node *node=nullptr;
     void* mem=nullptr;
     //create node
-    uint sz=*(_nodeBytes->get(opcode));
+    uint sz=*(_nodeBytes->get(static_cast<uint>(opcode)));
     mem=Node::operator new(sz);
     node=static_cast<Node*>(mem);
-    f->read((void*)node,sizeof(char),sz);
+    load_node(node,f,sz,opcode);
     if (opcode==Op_Con)  C->set_cached_top_node(node);
     nodeSet->at(i)=node;
     //clear input and output array
@@ -189,8 +203,8 @@ bool CSRGraph::deserialize() {
       (Node **) ((char *) (C->node_arena()->AmallocWords( node->len()* sizeof(void*))));
     memset(*in_tmp, 0, node->len() * sizeof(Node*));
     if (node->is_top()==false) *out_tmp=NO_OUT_ARRAY;
-    *reinterpret_cast<int*>((char*)node+32)=0;
-    *reinterpret_cast<int*>((char*)node+36)=0;
+    *reinterpret_cast<int*>((char*)node+32)=0;//clear _outcnt
+    *reinterpret_cast<int*>((char*)node+36)=0;//clear _outmax
   }
   f->close();
   uint pIdx=0;//index the edgeIdx
@@ -236,6 +250,43 @@ bool CSRGraph::deserialize() {
   C->set_root(static_cast<RootNode*>(nodeSet->at(0)));
   return 0;
 
+}
+
+
+
+void CSRGraph::store_node(Node* n,fileStream* f){
+  ushort opcode=n->Opcode();
+  f->write((char*)&opcode,2);
+  int sz=*(_nodeBytes->get(opcode));
+//vt pointer, offset 0
+  f->write((char*)n+8,sz-8);
+}
+
+void CSRGraph::load_node(Node*n, fileStream*f,int sz,ushort op) {
+  *(void**)n=_vptrTable[op];
+  f->read((char*)n+8,sizeof(char),sz-8);
+}
+
+
+void CSRGraph::set_vptr_table(Node *root) {
+  VectorSet visited;
+  GrowableArray<Node *> nodeStack(Thread::current()->resource_area(), 0, 0, nullptr);
+  nodeStack.push(root);
+  while (nodeStack.length() > 0) {
+    Node* n = nodeStack.pop();
+    if (visited.test_set(n->_idx))
+      continue;
+    if (_vptrTable[n->Opcode()]==nullptr) {
+      _vptrTable[n->Opcode()]=*(void**)n;
+      ++_vptrNum;
+    }
+    for (uint i=0;i<n->outcnt();++i)
+      nodeStack.push(n->raw_out(i));
+    for (size_t i = 0; i < n->len(); i++)
+      if (n->in(i) != nullptr) {
+        nodeStack.push(n->in(i));
+      }
+  }
 }
 
 

@@ -47,7 +47,7 @@ private:
 	Compile* C;
 
 
-	Node* _root=nullptr;//coding style! add underscores
+	Node* _root=nullptr;
 	outputStream*_output;
 	char _buffer[512];
 	uint _nodeNum=0;
@@ -88,6 +88,7 @@ private:
 
 	int *_idHash=nullptr;//size=_nodeNum, _idxHash[newIdx]=oldIdx.
 
+
 	uint _nodeNum;
 	uint _edgeNum;//the edge num = _actlEdgeNum + -1( the empty slot)
 	uint _actlEdgeNum;//the actual valid edgenum
@@ -97,15 +98,16 @@ private:
 
 	uint _kbitBytesLen;//_after kbit-encoding the Bytes length of the _offset. _kbitBytesLen-1 is the final index.
 
-
+	ushort _vptrNum=0;
 
 public:
+
 	CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,Compile* C);
 	void compress_and_dump()override;
 	bool deserialize()override;
 	~CSRGraph();
 	ResourceHashtable<int,int>* _nodeBytes;//the dictionary of node size
-
+	void* _vptrTable[512]={};// the dictionary of the vtpr
 
 private:
 	//helping functions
@@ -117,7 +119,9 @@ private:
 	void kbit_encoding();
 	void kbit_decoding();
 
-
+	void set_vptr_table(Node* root);
+	void store_node(Node* n,fileStream* f);
+	void load_node(Node* n,fileStream* f,int sz,ushort op);
 
 };
 //______________________________________________Auxiliary Class_________________________________________________
