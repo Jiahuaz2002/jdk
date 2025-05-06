@@ -46,9 +46,7 @@ class SonSerializer:public ResourceObj{
 private:
 	Compile* C;
 
-
 	Node* _root=nullptr;
-	outputStream*_output;
 	char _buffer[512];
 	uint _nodeNum=0;
 	uint _edgeNum=0;
@@ -99,6 +97,8 @@ private:
 	uint _kbitBytesLen;//_after kbit-encoding the Bytes length of the _offset. _kbitBytesLen-1 is the final index.
 
 	ushort _vptrNum=0;
+	fileStream* _f;
+
 
 public:
 
@@ -118,10 +118,17 @@ private:
 	void initialize_nodebyte();
 	void kbit_encoding();
 	void kbit_decoding();
-
+	int kbit_encoding(int* a,int sz);
+	void kbit_decoding(int* a,int sz);
+	int bit4_encoding(int* a,int sz);
+	void bit4_decoding(int* a,int sz);
 	void set_vptr_table(Node* root);
 	void store_node(Node* n,fileStream* f);
 	void load_node(Node* n,fileStream* f,int sz,ushort op);
+	void store_offset();
+	void store_edgeIdx();
+	void store_edge();
+
 
 };
 //______________________________________________Auxiliary Class_________________________________________________

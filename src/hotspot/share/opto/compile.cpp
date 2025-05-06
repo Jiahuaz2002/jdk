@@ -1135,6 +1135,7 @@ void Compile::verify_start(StartNode* s) const {
  * the ideal graph.
  */
 StartNode* Compile::start() const {
+
   assert (!failing_internal() || C->failure_is_artificial(), "Must not have pending failure. Reason is: %s", failure_reason());
   for (DUIterator_Fast imax, i = root()->fast_outs(imax); i < imax; i++) {
     Node* start = root()->fast_out(i);
@@ -1142,6 +1143,7 @@ StartNode* Compile::start() const {
       return start->as_Start();
     }
   }
+
   fatal("Did not find Start node!");
   return nullptr;
 }

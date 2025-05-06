@@ -9,7 +9,6 @@
 #include "runtime/globals_extension.hpp"
 
 SonSerializer::SonSerializer(Compile* compile,const char* file_name){
-	_output = new (mtCompiler) fileStream(file_name,"w");
 	_root = (Node*)compile->root();
   this->set_compile((compile));
   walk_nodes(_root);
@@ -17,7 +16,6 @@ SonSerializer::SonSerializer(Compile* compile,const char* file_name){
 
 SonSerializer:: ~SonSerializer()
 {
-  if(_output) delete _output;
 
 }
 
@@ -67,7 +65,7 @@ bool SonSerializer::deserialize() {
 CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,Compile* C)
   :_root(nd),_nodeNum(nodeNumber),_edgeNum(edgeNumber),C(C)
 {
-
+  _f=new (mtCompiler) fileStream("edge.txt","w");
   Node* start=nd;
   initialize_nodebyte();
   set_vptr_table(_root);
@@ -153,7 +151,10 @@ CSRGraph::CSRGraph(Node* nd,uint nodeNumber,uint edgeNumber,Compile* C)
     _edge[i]=lookup_idx_hash(_oriEdge[i]);
 
   FREE_C_HEAP_ARRAY(int,_oriEdge);
-
+  store_offset();
+  store_edgeIdx();
+  store_edge();
+  _f->close();
 }
 CSRGraph::~CSRGraph() {
   if (_edgeIdx) FREE_C_HEAP_ARRAY(int,_edgeIdx);
@@ -203,13 +204,15 @@ bool CSRGraph::deserialize() {
       (Node **) ((char *) (C->node_arena()->AmallocWords( node->len()* sizeof(void*))));
     memset(*in_tmp, 0, node->len() * sizeof(Node*));
     if (node->is_top()==false) *out_tmp=NO_OUT_ARRAY;
-    *reinterpret_cast<int*>((char*)node+32)=0;//clear _outcnt
-    *reinterpret_cast<int*>((char*)node+36)=0;//clear _outmax
+    *reinterpret_cast<int*>((char*)node+32)=0;//set _outcnt 0
+    *reinterpret_cast<int*>((char*)node+36)=0;//set _outmax
   }
   f->close();
   uint pIdx=0;//index the edgeIdx
   for (uint i=0;i<_nodeNum;++i) {
     //first get the sizeof the input(maybe contain -1
+   // if (nodeSet->at(i)->Opcode()==Op_Start)
+    //  tty->print_cr("hello, we are now at this point");
     uint sz= (i==_nodeNum-1?_edgeNum:_offset[i+1]) -_offset[i];
     uint pEdge=_offset[i];
     if(_edgeIdxMask->get(i)) {//the idx is stored, case 1 not preliminary but filled<empty
@@ -259,12 +262,23 @@ void CSRGraph::store_node(Node* n,fileStream* f){
   f->write((char*)&opcode,2);
   int sz=*(_nodeBytes->get(opcode));
 //vt pointer, offset 0
-  f->write((char*)n+8,sz-8);
+  f->write((char*)n+24,8);
+  f->write((char*)n+40,sz-40);
+  //f->write((char*)n+48,12);//shoud be 12
+  //f->write((char*)n+64,sz-64);
 }
 
 void CSRGraph::load_node(Node*n, fileStream*f,int sz,ushort op) {
   *(void**)n=_vptrTable[op];
-  f->read((char*)n+8,sizeof(char),sz-8);
+  f->read((char*)n+24,sizeof(char),8);
+  *(Node***)((char*)n+8)=*(Node***)((char*)_root+8);//to satisfy a requirement when setting top node
+
+  f->read((char*)n+40,sizeof(char),sz-40) ;
+ // *(juint*)((char*)n+44)=*(juint*)((char*)n+40);
+
+  //f->read((char*)n+48,sizeof(char),12);
+  //*(uint*)((char*)n+60)=0xf1f1f1f1;
+  //f->read((char*)n+64,sizeof(char),sz-64);
 }
 
 
@@ -319,7 +333,7 @@ void CSRGraph::set_bit(u_int8_t *obj, const int bit) {
 }
 
 void CSRGraph::kbit_encoding(){
-  int pBytes=0;//print to the new offset
+  int pBytes=0;//point to the new offset
   for (uint i=0;i<_nodeNum;++i) {//i is the current node index.
     uint start=_offset[i];
     uint end=i==_nodeNum-1?_edgeNum:_offset[i+1];
@@ -345,7 +359,7 @@ void CSRGraph::kbit_encoding(){
         else {
           if ((obj&(0x7f<<shift))!=0) {
             set_bit(cur-1,7);
-            *cur=obj&0x7f;
+            *cur=obj&0x7f;//???
             shift+=7;
           }
           else break;
@@ -357,6 +371,9 @@ void CSRGraph::kbit_encoding(){
   }
   _kbitBytesLen=pBytes;
 }
+
+
+
 void CSRGraph::kbit_decoding() {//in-place recover
   int *tmpEdge = (int*)C->comp_arena()->Amalloc(sizeof(int)*_edgeNum);
   uint pInt=0;
@@ -384,7 +401,7 @@ void CSRGraph::kbit_decoding() {//in-place recover
         shift+=isFirstByte?6:7;
         isFirstByte=false;
       }
-      tmpEdge[pInt++]=neg?(i-obj):(i+obj);
+      tmpEdge[pInt++]=neg?(i-obj):(i+obj);//recover obj(complement version) by i-obj
     }
   }
 
@@ -394,4 +411,185 @@ void CSRGraph::kbit_decoding() {//in-place recover
 }
 
 
-//______________________________________________Auxiliary Class_________________________________________________
+//______________________________________________Auxiliary Member Function________________________________________________
+//give it an array and the size, it will do inplace kbit-encoding and return the kbit length
+int CSRGraph::kbit_encoding(int* a,int sz) {
+  int pBytes=0;
+  for (int i=0;i<sz;++i) {
+    int obj=a[i];
+    bool neg=obj<0;
+    if (neg) {
+      obj=~obj+1;//complement->source
+    }
+    int shift=0;
+    for (int b=0;b<4;++b,++pBytes){
+      u_int8_t* cur=(u_int8_t*)a+pBytes;
+      if (b==0) {
+        *cur=obj&0x3f;
+        if (neg) set_bit(cur,6);
+        shift+=6;
+      }
+      else {
+        if ((obj&(0x7f<<shift))!=0) {
+          set_bit(cur-1,7);
+          *cur=(obj&(0x7f<<shift))>>shift;
+          shift+=7;
+        }
+        else break;
+      }
+    }
+  }
+  return pBytes;
+
+}
+void CSRGraph::kbit_decoding(int* a,int sz) {
+  int *tmpEdge = (int*)C->comp_arena()->Amalloc(sizeof(int)*sz);
+  uint pInt=0;
+  uint pByte=0;
+  for (int i=0;i< sz;++i) {//for each node
+      int obj=0;
+      int shift=0;
+      bool neg=false;
+      bool isFirstByte=true;
+      while(1){//decoding an integer idx.for each byte.
+        u_int8_t * cur=(u_int8_t*)a+pByte;
+        if(isFirstByte){
+          neg=(*cur&0x40)!=0;
+          obj+=*cur&0x3f;
+        }
+        else obj+=(*cur&0x7f)<<shift;
+        ++pByte;
+        if((*cur&0x80)==0) break;
+        shift+=isFirstByte?6:7;
+        isFirstByte=false;
+      }
+      tmpEdge[pInt++]=neg?-obj:obj;//recover obj(complement version) by i-obj
+  }
+  memcpy(a,tmpEdge,sizeof(int)*sz);
+  C->comp_arena()->Afree(tmpEdge,sizeof(int)*sz);
+
+}
+
+//4bits-version kbit-encoding, return the 4bits blocks' num
+int CSRGraph::bit4_encoding(int* a, int sz) {
+  int out_idx = 0;      // index into int[]
+  int bit_pos = 0;      // bit position within current int
+  int buffer = 0;       // current 32-bit output buffer
+  for (int i = 0; i < sz; ++i) {
+    int val = a[i];
+    do {
+      int chunk = val & 0x7; // lower 3 bits
+      val >>= 3;
+      int nibble = (val != 0) ? (0x8 | chunk) : chunk;
+      buffer |= (nibble << bit_pos);
+      bit_pos += 4;
+
+      if (bit_pos == 32) {
+        a[out_idx++] = buffer;
+        buffer = 0;
+        bit_pos = 0;
+      }
+    } while (val != 0);
+  }
+
+  if (bit_pos > 0) {
+    a[out_idx++] = buffer;
+  }
+
+  return out_idx;
+}
+
+
+
+void CSRGraph::bit4_decoding(int* a, int sz) {
+  int read_idx = 0;
+  int bit_pos = 0;
+  int buffer = a[0];
+
+  int *temp = (int*)C->comp_arena()->Amalloc(sizeof(int)*sz);
+  int write_idx = 0;
+  int acc = 0;
+  int shift = 0;
+
+  while (write_idx < sz) {
+    if (bit_pos >= 32) {
+      buffer = a[++read_idx];
+      bit_pos = 0;
+    }
+
+    int nibble = (buffer >> bit_pos) & 0xF;
+    bit_pos += 4;
+
+    acc |= (nibble & 0x7) << shift;
+    shift += 3;
+
+    if ((nibble & 0x8) == 0) {
+      temp[write_idx++] = acc;
+      acc = 0;
+      shift = 0;
+    }
+
+  }
+
+  // Copy back to a[]
+  for (int i = 0; i < sz; ++i) {
+    a[i] = temp[i];
+  }
+  C->comp_arena()->Afree(temp,sizeof(int)*sz);
+}
+
+void CSRGraph::store_offset() {
+  for (int i=_nodeNum-1;i>0;--i)
+    _offset[i]-=_offset[i-1];//convert absolute value to relative delta
+  //int sz=kbit_encoding(_offset,_nodeNum);
+  int sz=bit4_encoding(_offset,_nodeNum)<<2;
+  _f->write((char*)_offset, sz);
+  bit4_decoding(_offset,_nodeNum);
+  for (uint i=1;i<_nodeNum;++i)
+    _offset[i]+=_offset[i-1];
+
+}
+
+void CSRGraph::store_edgeIdx() {
+ // int sz=kbit_encoding(_edgeIdx,_edgeIdxSize);
+ int sz=bit4_encoding(_edgeIdx,_edgeIdxSize)<<2;
+  _f->write((char*)_edgeIdx, sz);
+  bit4_decoding(_edgeIdx,_edgeIdxSize);
+}
+
+void CSRGraph::store_edge() {
+  for (uint i=0;i<_nodeNum;++i) {
+    int start=_offset[i];
+    int end=((i==_nodeNum-1)?_edgeNum:_offset[i+1])-1;//[start,end]
+    int pre=_edge[end];
+    int p=end;
+    while ((--p)>=start) {
+      if (_edge[p]==-1) continue;
+      int temp=pre;
+      pre=_edge[p];
+      uint flag=_edge[p]>temp?1:0;//1:positive value, 0: negtive value
+      _edge[p]=((flag?(_edge[p]-temp):(temp-_edge[p]))<<1)|flag;
+
+    }
+  }
+  int sz=kbit_encoding(_edge,_edgeNum);
+  _f->write((char*)_edge, sz);
+  kbit_decoding(_edge,_edgeNum);
+
+  for (uint i=0;i<_nodeNum;++i) {
+    int start=_offset[i];
+    int end=((i==_nodeNum-1)?_edgeNum:_offset[i+1])-1;//[start,end]
+    int pre=_edge[end];
+    int p=end;
+    while ((--p)>=start) {
+      if (_edge[p]==-1) continue;
+      uint flag=_edge[p]&0x1;
+      if (flag)
+        _edge[p]=(_edge[p]>>1)+pre;
+      else _edge[p]=pre-(_edge[p]>>1);
+      pre=_edge[p];
+    }
+  }
+//may not strictly decreasing
+}
+
