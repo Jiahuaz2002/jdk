@@ -212,6 +212,7 @@ void Matcher::match( ) {
     // Get ideal-register return type
     uint ireg = range->field_at(TypeFunc::Parms)->ideal_reg();
     // Get machine return register
+    tty->print_cr("hello, can you see me");
     uint sop = C->start()->Opcode();
     OptoRegPair regs = return_value(ireg);
 

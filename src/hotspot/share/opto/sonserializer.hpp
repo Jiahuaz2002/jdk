@@ -116,8 +116,8 @@ private:
 	void set_bit(u_int8_t* obj, int bit);//bit from 0->7, set bit from 0->1
 	bool preliminary_known_node(Node* node);
 	void initialize_nodebyte();
-	void kbit_encoding();
-	void kbit_decoding();
+	int kbit_encoding_pos(int*a,int sz);//only consider positive value
+	void kbit_decoding_pos(int*a,int sz);
 	int kbit_encoding(int* a,int sz);
 	void kbit_decoding(int* a,int sz);
 	int bit4_encoding(int* a,int sz);
@@ -128,6 +128,8 @@ private:
 	void store_offset();
 	void store_edgeIdx();
 	void store_edge();
+	void store_sorted_edge();
+	void store_partly_sorted_edge();
 
 
 };
