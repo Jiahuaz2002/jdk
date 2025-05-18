@@ -6,9 +6,9 @@
 #include <algorithm>
 #include <bits/ctype_base.h>
 //if you want to sort the edge, then U have to store all the index. No exception, no priminary knowledge
-#define SORTTHEEDGE false
+#define SORTTHEEDGE true
 // combine sorting and preliminary knowledge
-#define COMBINATION true
+#define COMBINATION false
 #define PRELIMINARY false
 
 #include "runtime/globals_extension.hpp"
@@ -233,6 +233,7 @@ bool CSRGraph::deserialize() {
     if (node->is_top()==false) *out_tmp=NO_OUT_ARRAY;
     *reinterpret_cast<int*>((char*)node+32)=0;//set _outcnt 0
     *reinterpret_cast<int*>((char*)node+36)=0;//set _outmax
+    *reinterpret_cast<int*>((char*)node+40)=_idHash[i];
   }
   f->close();
   uint pIdx=0;//index the edgeIdx
@@ -293,20 +294,36 @@ void CSRGraph::store_node(Node* n,fileStream* f){
   ushort opcode=n->Opcode();
   f->write((char*)&opcode,2);
   int sz=*(_nodeBytes->get(opcode));
+
+  f->write((char*)n+16,16);//in release mode if we omit _out, bug will appear
+
+
+  f->write((char*)n+44,4);
+  f->write((char*)n+52,sz-52);
 //vt pointer, offset 0
-  f->write((char*)n+24,8);
-  f->write((char*)n+40,sz-40);
+ /* f->write((char*)n+24,8);
+  f->write((char*)n+40,sz-40);*/
   //f->write((char*)n+48,12);//shoud be 12
   //f->write((char*)n+64,sz-64);
 }
 
 void CSRGraph::load_node(Node*n, fileStream*f,int sz,ushort op) {
   *(void**)n=_vptrTable[op];
-  f->read((char*)n+24,sizeof(char),8);
+
+  //f->read((char*)n,sizeof(char),sz);
+  f->read((char*)n+16,sizeof(char),16);
+
+
+  f->read((char*)n+44,sizeof(char),4);
+  f->read((char*)n+52,sizeof(char),sz-52);
   *(Node***)((char*)n+8)=*(Node***)((char*)_root+8);//to satisfy a requirement when setting top node
 
-  f->read((char*)n+40,sizeof(char),sz-40) ;
- // *(juint*)((char*)n+44)=*(juint*)((char*)n+40);
+  /*f->read((char*)n+24,sizeof(char),8);
+
+
+  f->read((char*)n+40,sizeof(char),sz-40) ;*/
+
+  // *(juint*)((char*)n+44)=*(juint*)((char*)n+40);
 
   //f->read((char*)n+48,sizeof(char),12);
   //*(uint*)((char*)n+60)=0xf1f1f1f1;
