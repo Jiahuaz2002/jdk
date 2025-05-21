@@ -1,0 +1,26 @@
+Benchmark Results (Sorted by node.txt compressed size)
+======================================================
+=================
+Benchmark Results
+Test5, node.txt: lzma 4314 -> 900 (20.86%), edge.txt: zlib 503 -> 362 (71.97%), code size: 352 bytes
+Test3, node.txt: lzma 4776 -> 1008 (21.11%), edge.txt: zlib 590 -> 459 (77.80%), code size: 248 bytes
+Test1, node.txt: lzma 6212 -> 1048 (16.87%), edge.txt: zlib 827 -> 610 (73.76%), code size: 432 bytes
+Test7, node.txt: lzma 6620 -> 1164 (17.58%), edge.txt: zlib 914 -> 659 (72.10%), code size: 552 bytes
+Test8, node.txt: lzma 7402 -> 1172 (15.83%), edge.txt: zlib 1089 -> 776 (71.26%), code size: 600 bytes
+Test2, node.txt: lzma 7612 -> 1200 (15.76%), edge.txt: zlib 1047 -> 788 (75.26%), code size: 560 bytes
+Test6, node.txt: lzma 15272 -> 1580 (10.35%), edge.txt: lzma 2490 -> 1624 (65.22%), code size: 1192 bytes
+Test4, node.txt: lzma 31364 -> 2612 (8.33%), edge.txt: lzma 6441 -> 3460 (53.72%), code size: 3216 bytes
+
+
+Two-Column Summary
+==================
+Graph Size (bytes)   |   Code Size (bytes)
+---------------------|---------------------
+                1262   |                 352
+                1467   |                 248
+                1658   |                 432
+                1823   |                 552
+                1948   |                 600
+                1988   |                 560
+                3204   |                1192
+                6072   |                3216
