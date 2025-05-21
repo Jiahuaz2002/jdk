@@ -1,0 +1,3292 @@
+OpenJDK 64-Bit Server VM warning: PrintAssembly is enabled; turning on DebugNonSafepoints to gain additional output
+CompileCommand: PrintCompilation Test9.* bool PrintCompilation = true
+CompileCommand: compileonly Test9.test bool compileonly = true
+CompileCommand: PrintInlining Test9.test bool PrintInlining = true
+[0.112s][warning][os] Loading hsdis library failed
+
+Compiled method (n/a) 111    1     n       java.lang.invoke.MethodHandle::linkToStatic(LLLLLLL)L (native)
+ total in heap  [0x0000792e19086408,0x0000792e19086520] = 280
+ relocation     [0x0000792e190864e0,0x0000792e190864e8] = 8
+ main code      [0x0000792e19086500,0x0000792e1908651d] = 29
+ stub code      [0x0000792e1908651d,0x0000792e19086520] = 3
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df841e278} 'linkToStatic' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/invoke/MemberName;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx:rcx   = 'java/lang/Object'
+  # parm3:    r8:r8     = 'java/lang/Object'
+  # parm4:    r9:r9     = 'java/lang/Object'
+  # parm5:    rdi:rdi   = 'java/lang/Object'
+  # parm6:    [sp+0x0]   = 'java/lang/invoke/MemberName'  (sp of caller)
+  0x0000792e19086500: 488b 5c24 | 088b 5b24 | 488b 5b10 | 4885 db0f | 8403 0000 | 00ff 6340 
+
+  0x0000792e19086518: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e19086518: e943 87fc | fff4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 148    2     n       java.lang.invoke.MethodHandle::linkToSpecial(LLL)L (native)
+ total in heap  [0x0000792e19098388,0x0000792e190984a0] = 280
+ relocation     [0x0000792e19098460,0x0000792e19098468] = 8
+ main code      [0x0000792e19098480,0x0000792e1909849b] = 27
+ stub code      [0x0000792e1909849b,0x0000792e190984a0] = 5
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df84f66d8} 'linkToSpecial' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/invoke/MemberName;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx:rcx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e19098480: 483b 068b | 5924 488b | 5b10 4885 | db0f 8403 | 0000 00ff 
+
+  0x0000792e19098494: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e19098494: 6340 e9c5 | 67fb fff4 | f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 150    3     n       java.lang.invoke.MethodHandle::invokeBasic(LLLLLL)L (native)
+ total in heap  [0x0000792e19098688,0x0000792e190987a0] = 280
+ relocation     [0x0000792e19098760,0x0000792e19098768] = 8
+ main code      [0x0000792e19098780,0x0000792e1909879e] = 30
+ stub code      [0x0000792e1909879e,0x0000792e190987a0] = 2
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df84fa2b8} 'invokeBasic' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # this:     rsi:rsi   = 'java/lang/invoke/MethodHandle'
+  # parm0:    rdx:rdx   = 'java/lang/Object'
+  # parm1:    rcx:rcx   = 'java/lang/Object'
+  # parm2:    r8:r8     = 'java/lang/Object'
+  # parm3:    r9:r9     = 'java/lang/Object'
+  # parm4:    rdi:rdi   = 'java/lang/Object'
+  # parm5:    [sp+0x0]   = 'java/lang/Object'  (sp of caller)
+  0x0000792e19098780: 8b5e 148b | 5b28 8b5b | 2448 8b5b | 1048 85db | 0f84 0300 | 0000 ff63 
+
+  0x0000792e19098798: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e19098798: 40e9 c264 | fbff f4f4 
+[/MachCode]
+
+Compiled method (n/a) 155    4     n       java.lang.invoke.MethodHandle::linkToSpecial(LLLL)V (native)
+ total in heap  [0x0000792e19098e08,0x0000792e19098f20] = 280
+ relocation     [0x0000792e19098ee0,0x0000792e19098ee8] = 8
+ main code      [0x0000792e19098f00,0x0000792e19098f1c] = 28
+ stub code      [0x0000792e19098f1c,0x0000792e19098f20] = 4
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df858a6f0} 'linkToSpecial' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/invoke/MemberName;)V' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx:rcx   = 'java/lang/Object'
+  # parm3:    r8:r8     = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e19098f00: 483b 0641 | 8b58 2448 | 8b5b 1048 | 85db 0f84 | 0300 0000 
+
+  0x0000792e19098f14: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e19098f14: ff63 40e9 | 445d fbff 
+[Stub Code]
+  0x0000792e19098f1c: f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 159    5     n       java.lang.invoke.MethodHandle::invokeBasic(LL)L (native)
+ total in heap  [0x0000792e19099108,0x0000792e19099220] = 280
+ relocation     [0x0000792e190991e0,0x0000792e190991e8] = 8
+ main code      [0x0000792e19099200,0x0000792e1909921e] = 30
+ stub code      [0x0000792e1909921e,0x0000792e19099220] = 2
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df85948c8} 'invokeBasic' '(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # this:     rsi:rsi   = 'java/lang/invoke/MethodHandle'
+  # parm0:    rdx:rdx   = 'java/lang/Object'
+  # parm1:    rcx:rcx   = 'java/lang/Object'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e19099200: 8b5e 148b | 5b28 8b5b | 2448 8b5b | 1048 85db | 0f84 0300 | 0000 ff63 
+
+  0x0000792e19099218: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e19099218: 40e9 425a | fbff f4f4 
+[/MachCode]
+
+Compiled method (n/a) 159    6     n       java.lang.invoke.MethodHandle::linkToSpecial(LLLL)L (native)
+ total in heap  [0x0000792e19099408,0x0000792e19099520] = 280
+ relocation     [0x0000792e190994e0,0x0000792e190994e8] = 8
+ main code      [0x0000792e19099500,0x0000792e1909951c] = 28
+ stub code      [0x0000792e1909951c,0x0000792e19099520] = 4
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df8594a08} 'linkToSpecial' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/invoke/MemberName;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx:rcx   = 'java/lang/Object'
+  # parm3:    r8:r8     = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e19099500: 483b 0641 | 8b58 2448 | 8b5b 1048 | 85db 0f84 | 0300 0000 
+
+  0x0000792e19099514: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e19099514: ff63 40e9 | 4457 fbff 
+[Stub Code]
+  0x0000792e1909951c: f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 170    7     n       java.lang.invoke.MethodHandle::linkToStatic(LLIL)I (native)
+ total in heap  [0x0000792e1909e388,0x0000792e1909e4a0] = 280
+ relocation     [0x0000792e1909e460,0x0000792e1909e468] = 8
+ main code      [0x0000792e1909e480,0x0000792e1909e499] = 25
+ stub code      [0x0000792e1909e499,0x0000792e1909e4a0] = 7
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df85c2fc0} 'linkToStatic' '(Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/invoke/MemberName;)I' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx       = int
+  # parm3:    r8:r8     = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e1909e480: 418b 5824 | 488b 5b10 | 4885 db0f | 8403 0000 | 00ff 6340 
+
+  0x0000792e1909e494: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e1909e494: e9c7 07fb | fff4 f4f4 | f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 178    8     n       java.lang.invoke.MethodHandle::linkToSpecial(LLL)V (native)
+ total in heap  [0x0000792e1909eb08,0x0000792e1909ec20] = 280
+ relocation     [0x0000792e1909ebe0,0x0000792e1909ebe8] = 8
+ main code      [0x0000792e1909ec00,0x0000792e1909ec1b] = 27
+ stub code      [0x0000792e1909ec1b,0x0000792e1909ec20] = 5
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df85e07d8} 'linkToSpecial' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/invoke/MemberName;)V' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx:rcx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e1909ec00: 483b 068b | 5924 488b | 5b10 4885 | db0f 8403 | 0000 00ff 
+
+  0x0000792e1909ec14: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e1909ec14: 6340 e945 | 00fb fff4 | f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 182    9     n       java.lang.invoke.MethodHandle::invokeBasic(L)L (native)
+ total in heap  [0x0000792e1909ee08,0x0000792e1909ef20] = 280
+ relocation     [0x0000792e1909eee0,0x0000792e1909eee8] = 8
+ main code      [0x0000792e1909ef00,0x0000792e1909ef1e] = 30
+ stub code      [0x0000792e1909ef1e,0x0000792e1909ef20] = 2
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df85e1060} 'invokeBasic' '(Ljava/lang/Object;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # this:     rsi:rsi   = 'java/lang/invoke/MethodHandle'
+  # parm0:    rdx:rdx   = 'java/lang/Object'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e1909ef00: 8b5e 148b | 5b28 8b5b | 2448 8b5b | 1048 85db | 0f84 0300 | 0000 ff63 
+
+  0x0000792e1909ef18: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e1909ef18: 40e9 42fd | faff f4f4 
+[/MachCode]
+
+Compiled method (n/a) 187   10     n       java.lang.invoke.MethodHandle::linkToStatic(LL)L (native)
+ total in heap  [0x0000792e1909f108,0x0000792e1909f218] = 272
+ relocation     [0x0000792e1909f1e0,0x0000792e1909f1e8] = 8
+ main code      [0x0000792e1909f200,0x0000792e1909f218] = 24
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df85e88b0} 'linkToStatic' '(Ljava/lang/Object;Ljava/lang/invoke/MemberName;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e1909f200: 8b5a 2448 | 8b5b 1048 | 85db 0f84 | 0300 0000 
+
+  0x0000792e1909f210: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e1909f210: ff63 40e9 | 48fa faff 
+[/MachCode]
+
+Compiled method (n/a) 394   11     n       java.lang.invoke.MethodHandle::linkToStatic(L)L (native)
+ total in heap  [0x0000792e190a1c88,0x0000792e190a1d98] = 272
+ relocation     [0x0000792e190a1d60,0x0000792e190a1d68] = 8
+ main code      [0x0000792e190a1d80,0x0000792e190a1d98] = 24
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df852ee50} 'linkToStatic' '(Ljava/lang/invoke/MemberName;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a1d80: 8b5e 2448 | 8b5b 1048 | 85db 0f84 | 0300 0000 
+
+  0x0000792e190a1d90: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a1d90: ff63 40e9 | c8ce faff 
+[/MachCode]
+
+Compiled method (n/a) 400   12     n       java.lang.invoke.MethodHandle::linkToStatic(LLL)L (native)
+ total in heap  [0x0000792e190a2888,0x0000792e190a2998] = 272
+ relocation     [0x0000792e190a2960,0x0000792e190a2968] = 8
+ main code      [0x0000792e190a2980,0x0000792e190a2998] = 24
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df8510848} 'linkToStatic' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/invoke/MemberName;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx:rcx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a2980: 8b59 2448 | 8b5b 1048 | 85db 0f84 | 0300 0000 
+
+  0x0000792e190a2990: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a2990: ff63 40e9 | c8c2 faff 
+[/MachCode]
+
+Compiled method (n/a) 403   13     n       java.lang.invoke.MethodHandle::linkToStatic(LLLL)L (native)
+ total in heap  [0x0000792e190a2b88,0x0000792e190a2ca0] = 280
+ relocation     [0x0000792e190a2c60,0x0000792e190a2c68] = 8
+ main code      [0x0000792e190a2c80,0x0000792e190a2c99] = 25
+ stub code      [0x0000792e190a2c99,0x0000792e190a2ca0] = 7
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df8511fe8} 'linkToStatic' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/invoke/MemberName;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx:rcx   = 'java/lang/Object'
+  # parm3:    r8:r8     = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a2c80: 418b 5824 | 488b 5b10 | 4885 db0f | 8403 0000 | 00ff 6340 
+
+  0x0000792e190a2c94: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a2c94: e9c7 bffa | fff4 f4f4 | f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 409   14     n       java.lang.invoke.MethodHandle::invokeBasic()L (native)
+ total in heap  [0x0000792e190a3788,0x0000792e190a38a0] = 280
+ relocation     [0x0000792e190a3860,0x0000792e190a3868] = 8
+ main code      [0x0000792e190a3880,0x0000792e190a389e] = 30
+ stub code      [0x0000792e190a389e,0x0000792e190a38a0] = 2
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df8516430} 'invokeBasic' '()Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a3880: 8b5e 148b | 5b28 8b5b | 2448 8b5b | 1048 85db | 0f84 0300 | 0000 ff63 
+
+  0x0000792e190a3898: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a3898: 40e9 c2b3 | faff f4f4 
+[/MachCode]
+
+Compiled method (n/a) 409   15     n       java.lang.invoke.MethodHandle::linkToSpecial(LL)L (native)
+ total in heap  [0x0000792e190a3a88,0x0000792e190a3ba0] = 280
+ relocation     [0x0000792e190a3b60,0x0000792e190a3b68] = 8
+ main code      [0x0000792e190a3b80,0x0000792e190a3b9b] = 27
+ stub code      [0x0000792e190a3b9b,0x0000792e190a3ba0] = 5
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df8516548} 'linkToSpecial' '(Ljava/lang/Object;Ljava/lang/invoke/MemberName;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a3b80: 483b 068b | 5a24 488b | 5b10 4885 | db0f 8403 | 0000 00ff 
+
+  0x0000792e190a3b94: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a3b94: 6340 e9c5 | b0fa fff4 | f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 419   16     n       java.lang.invoke.MethodHandle::linkToSpecial(LL)V (native)
+ total in heap  [0x0000792e190a3d88,0x0000792e190a3ea0] = 280
+ relocation     [0x0000792e190a3e60,0x0000792e190a3e68] = 8
+ main code      [0x0000792e190a3e80,0x0000792e190a3e9b] = 27
+ stub code      [0x0000792e190a3e9b,0x0000792e190a3ea0] = 5
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df87136b8} 'linkToSpecial' '(Ljava/lang/Object;Ljava/lang/invoke/MemberName;)V' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a3e80: 483b 068b | 5a24 488b | 5b10 4885 | db0f 8403 | 0000 00ff 
+
+  0x0000792e190a3e94: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a3e94: 6340 e9c5 | adfa fff4 | f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 426   17     n       java.lang.invoke.MethodHandle::linkToInterface(LLL)I (native)
+ total in heap  [0x0000792e190a4088,0x0000792e190a41e0] = 344
+ relocation     [0x0000792e190a4160,0x0000792e190a4168] = 8
+ main code      [0x0000792e190a4180,0x0000792e190a41dd] = 93
+ stub code      [0x0000792e190a41dd,0x0000792e190a41e0] = 3
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df87159b0} 'linkToInterface' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/invoke/MemberName;)I' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx:rcx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a4180: 448b 5608 | 8b41 1848 | 8b40 1048 | 8b59 1045 | 8b9a b800 | 0000 4f8d | 9cda d001 | 0000 4d8d 
+  0x0000792e190a41a0: 14da 498b | 1b48 3bc3 | 7415 4885 | db0f 8425 | 0000 0049 | 83c3 1049 | 8b1b 483b | c375 eb45 
+  0x0000792e190a41c0: 8b5b 084b | 8b1c 1a48 | 85db 0f84 | 0300 0000 
+
+  0x0000792e190a41d0: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a41d0: ff63 40e9 | 88aa faff 
+
+  0x0000792e190a41d8: ;   {runtime_call Shared Runtime throw_IncompatibleClassChangeError_blob}
+  0x0000792e190a41d8: e983 adfa | fff4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 441   18     n       java.lang.invoke.MethodHandle::linkToStatic(LL)I (native)
+ total in heap  [0x0000792e190a4808,0x0000792e190a4918] = 272
+ relocation     [0x0000792e190a48e0,0x0000792e190a48e8] = 8
+ main code      [0x0000792e190a4900,0x0000792e190a4918] = 24
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df87239c8} 'linkToStatic' '(Ljava/lang/Object;Ljava/lang/invoke/MemberName;)I' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a4900: 8b5a 2448 | 8b5b 1048 | 85db 0f84 | 0300 0000 
+
+  0x0000792e190a4910: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a4910: ff63 40e9 | 48a3 faff 
+[/MachCode]
+
+Compiled method (n/a) 450   19     n       java.lang.invoke.MethodHandle::linkToStatic(LLL)I (native)
+ total in heap  [0x0000792e190a4b08,0x0000792e190a4c18] = 272
+ relocation     [0x0000792e190a4be0,0x0000792e190a4be8] = 8
+ main code      [0x0000792e190a4c00,0x0000792e190a4c18] = 24
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df8725bb0} 'linkToStatic' '(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/invoke/MemberName;)I' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/Object'
+  # parm2:    rcx:rcx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a4c00: 8b59 2448 | 8b5b 1048 | 85db 0f84 | 0300 0000 
+
+  0x0000792e190a4c10: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a4c10: ff63 40e9 | 48a0 faff 
+[/MachCode]
+
+Compiled method (n/a) 453   20     n       java.lang.invoke.MethodHandle::linkToVirtual(LL)L (native)
+ total in heap  [0x0000792e190a4e08,0x0000792e190a4f28] = 288
+ relocation     [0x0000792e190a4ee0,0x0000792e190a4ee8] = 8
+ main code      [0x0000792e190a4f00,0x0000792e190a4f21] = 33
+ stub code      [0x0000792e190a4f21,0x0000792e190a4f28] = 7
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df87260b8} 'linkToVirtual' '(Ljava/lang/Object;Ljava/lang/invoke/MemberName;)Ljava/lang/Object;' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a4f00: 448b 5608 | 4c8b 5a10 | 4b8b 9cda | d001 0000 | 4885 db0f | 8403 0000 | 00ff 6340 
+
+  0x0000792e190a4f1c: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a4f1c: e93f 9dfa | fff4 f4f4 | f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 460   21     n       java.lang.invoke.MethodHandle::linkToSpecial(LL)I (native)
+ total in heap  [0x0000792e190a5108,0x0000792e190a5220] = 280
+ relocation     [0x0000792e190a51e0,0x0000792e190a51e8] = 8
+ main code      [0x0000792e190a5200,0x0000792e190a521b] = 27
+ stub code      [0x0000792e190a521b,0x0000792e190a5220] = 5
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df872f448} 'linkToSpecial' '(Ljava/lang/Object;Ljava/lang/invoke/MemberName;)I' in 'java/lang/invoke/MethodHandle'
+  # parm0:    rsi:rsi   = 'java/lang/Object'
+  # parm1:    rdx:rdx   = 'java/lang/invoke/MemberName'
+  #           [sp+0x0]  (sp of caller)
+  0x0000792e190a5200: 483b 068b | 5a24 488b | 5b10 4885 | db0f 8403 | 0000 00ff 
+
+  0x0000792e190a5214: ;   {runtime_call Shared Runtime throw_AbstractMethodError_blob}
+  0x0000792e190a5214: 6340 e945 | 9afa fff4 | f4f4 f4f4 
+[/MachCode]
+
+Compiled method (n/a) 517   22     n       jdk.internal.vm.Continuation::enterSpecial (native)
+ total in heap  [0x0000792e190a5408,0x0000792e190a5718] = 784
+ relocation     [0x0000792e190a54e0,0x0000792e190a5508] = 40
+ main code      [0x0000792e190a5520,0x0000792e190a56f8] = 472
+ stub code      [0x0000792e190a56f8,0x0000792e190a5718] = 32
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Entry Point]
+  # {method} {0x0000792df8082120} 'enterSpecial' '(Ljdk/internal/vm/Continuation;ZZ)V' in 'jdk/internal/vm/Continuation'
+  # parm0:    rsi:rsi   = 'jdk/internal/vm/Continuation'
+  # parm1:    rdx       = boolean
+  # parm2:    rcx       = boolean
+  #           [sp+0x50]  (sp of caller)
+  0x0000792e190a5520: 5848 8b74 | 2410 8b54 | 2408 8b0c | 2448 83e4 | f050 493b | a748 0500 | 0076 0749 | 89a7 4805 
+  0x0000792e190a5540: 0000 5548 | 8bec 4883 | ec40 498b | 8740 0500 | 0048 8944 | 2408 4989 | a740 0500 | 0048 8974 
+  0x0000792e190a5560: 2410 894c | 2420 48c7 | 4424 1800 | 0000 00c7 | 4424 2400 | 0000 00c7 | 4424 3800 | 0000 0049 
+  0x0000792e190a5580: 8b87 4805 | 0000 4889 | 4424 2849 | 8b87 5805 | 0000 4889 | 4424 3049 | c787 4805 | 0000 0000 
+  0x0000792e190a55a0: 0000 49c7 | 8758 0500 | 0000 0000 | 0048 85d2 | 0f85 b000 
+
+  0x0000792e190a55b4: ;   {static_call}
+  0x0000792e190a55b4: 0000 90e8 | a493 faff 
+
+  0x0000792e190a55bc: ;   {post_call_nop}
+  0x0000792e190a55bc: 0f1f 8400 | b401 0000 | e9aa 0000 | 0066 6666 | 0f1f 8400 | 0000 0000 | 6666 6690 | 0f1f 8400 
+  0x0000792e190a55dc: 0000 0000 
+[Verified Entry Point]
+  0x0000792e190a55e0: 5548 8bec | 4883 ec40 | 498b 8740 | 0500 0048 | 8944 2408 | 4989 a740 | 0500 0048 | 8974 2410 
+  0x0000792e190a5600: 894c 2420 | 48c7 4424 | 1800 0000 | 00c7 4424 | 2400 0000 | 00c7 4424 | 3800 0000 | 0049 8b87 
+  0x0000792e190a5620: 4805 0000 | 4889 4424 | 2849 8b87 | 5805 0000 | 4889 4424 | 3049 c787 | 4805 0000 | 0000 0000 
+  0x0000792e190a5640: 49c7 8758 | 0500 0000 | 0000 0048 | 85d2 7516 | 0f1f 8000 
+
+  0x0000792e190a5654: ;   {static_call}
+  0x0000792e190a5654: 0000 00e8 | 0493 faff 
+
+  0x0000792e190a565c: ;   {post_call_nop}
+  0x0000792e190a565c: 0f1f 8400 | 5402 0001 
+
+  0x0000792e190a5664: ;   {runtime_call StubRoutines (continuation stubs)}
+  0x0000792e190a5664: eb0d e855 
+
+  0x0000792e190a5668: ; ImmutableOopMap {}
+                      ;   {post_call_nop}
+  0x0000792e190a5668: 0bf6 ff0f | 1f84 0063 | 0200 0248 | 8b5c 2428 | 4989 9f48 | 0500 0048 | 8b5c 2430 | 4989 9f58 
+  0x0000792e190a5688: 0500 0048 | 8b5c 2408 | 4989 9f40 | 0500 0048 | 83c4 405d | c348 8b5c | 2428 4989 | 9f48 0500 
+  0x0000792e190a56a8: 0048 8b5c | 2430 4989 | 9f58 0500 | 0048 8b5c | 2408 4989 | 9f40 0500 | 0048 83c4 | 405d 498b 
+  0x0000792e190a56c8: ff48 8b34 | 2450 40f6 | c40f 0f84 | 1200 0000 | 4883 ec08 
+
+  0x0000792e190a56dc: ;   {runtime_call SharedRuntime::exception_handler_for_return_address(JavaThread*, unsigned char*)}
+  0x0000792e190a56dc: e85f 15db | 0a48 83c4 | 08e9 0500 
+
+  0x0000792e190a56e8: ;   {runtime_call SharedRuntime::exception_handler_for_return_address(JavaThread*, unsigned char*)}
+  0x0000792e190a56e8: 0000 e851 | 15db 0a48 | 8bd8 585a | ffe3 f4f4 
+[Stub Code]
+  0x0000792e190a56f8: ;   {no_reloc}
+  0x0000792e190a56f8: 48bb 0000 | 0000 0000 
+
+  0x0000792e190a5700: ;   {runtime_call native nmethod}
+  0x0000792e190a5700: 0000 e9fb 
+
+  0x0000792e190a5704: ;   {static_stub}
+  0x0000792e190a5704: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x0000792e190a5710: ;   {runtime_call native nmethod}
+  0x0000792e190a5710: 00e9 fbff | ffff f4f4 
+[/MachCode]
+
+Compiled method (n/a) 531   23     n       jdk.internal.vm.Continuation::doYield (native)
+ total in heap  [0x0000792e190a5788,0x0000792e190a5948] = 448
+ relocation     [0x0000792e190a5860,0x0000792e190a5870] = 16
+ main code      [0x0000792e190a5880,0x0000792e190a5946] = 198
+ stub code      [0x0000792e190a5946,0x0000792e190a5948] = 2
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df8082068} 'doYield' '()I' in 'jdk/internal/vm/Continuation'
+  #           [sp+0x10]  (sp of caller)
+  0x0000792e190a5880: 5548 8bec 
+
+  0x0000792e190a5884: ;   {post_call_nop}
+  0x0000792e190a5884: 0f1f 8400 | fc00 0000 | c5f8 7749 | 89af b803 
+
+  0x0000792e190a5894: ;   {internal_word}
+  0x0000792e190a5894: 0000 49ba | 8458 0a19 | 2e79 0000 | 4d89 97b0 | 0300 0049 | 89a7 a803 | 0000 498b | ff48 8bf4 
+  0x0000792e190a58b4: 40f6 c40f | 0f84 1200 | 0000 4883 
+
+  0x0000792e190a58c0: ;   {runtime_call int freeze<Config<(oop_kind)0, G1BarrierSet> >(JavaThread*, long*)}
+  0x0000792e190a58c0: ec08 e8a9 | a365 0a48 | 83c4 08e9 | 0500 0000 
+
+  0x0000792e190a58d0: ;   {runtime_call int freeze<Config<(oop_kind)0, G1BarrierSet> >(JavaThread*, long*)}
+  0x0000792e190a58d0: e89b a365 | 0a49 c787 | a803 0000 | 0000 0000 | 49c7 87b8 | 0300 0000 | 0000 0049 | c787 b003 
+  0x0000792e190a58f0: 0000 0000 | 0000 c5f8 | 7748 85c0 | 0f85 3100 | 0000 498b | a740 0500 | 0048 8b5c | 2428 4989 
+  0x0000792e190a5910: 9f48 0500 | 0048 8b5c | 2430 4989 | 9f58 0500 | 0048 8b5c | 2408 4989 | 9f40 0500 | 0048 83c4 
+  0x0000792e190a5930: 405d c349 | 837f 0800 | 0f84 0600 
+
+  0x0000792e190a593c: ;   {runtime_call StubRoutines (initial stubs)}
+  0x0000792e190a593c: 0000 c9e9 | 7cb2 f5ff | c9c3 f4f4 
+[/MachCode]
+Run
+566   24    b        Test9::test (38 bytes)
+
+============================= C2-compiled nmethod ==============================
+----------------------------------- Assembly -----------------------------------
+
+Compiled method (c2) 610   24             Test9::test (38 bytes)
+ total in heap  [0x0000792e190ab288,0x0000792e190ac0f8] = 3696
+ relocation     [0x0000792e190ab360,0x0000792e190ab440] = 224
+ main code      [0x0000792e190ab440,0x0000792e190ac0a8] = 3176
+ stub code      [0x0000792e190ac0a8,0x0000792e190ac0d0] = 40
+ oops           [0x0000792e190ac0d0,0x0000792e190ac0d8] = 8
+ metadata       [0x0000792e190ac0d8,0x0000792e190ac0f8] = 32
+ immutable data [0x0000792dd8208900,0x0000792dd8209bd8] = 4824
+ dependencies   [0x0000792dd8208900,0x0000792dd8208908] = 8
+ handler table  [0x0000792dd8208908,0x0000792dd82089c8] = 192
+ scopes pcs     [0x0000792dd82089c8,0x0000792dd82094e8] = 2848
+ scopes data    [0x0000792dd82094e8,0x0000792dd8209bd8] = 1776
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df8605420} 'test' '(I)I' in 'Test9'
+  # parm0:    rsi       = int
+  #           [sp+0x60]  (sp of caller)
+  0x0000792e190ab440: 8984 2400 | c0fe ff55 | 4883 ec50 | 4181 7f20 | 0000 0000 | 0f85 400c | 0000 498b | 87c8 0100 
+  0x0000792e190ab460: 004c 8bd0 | 4983 c228 | 4d3b 97d8 | 0100 000f | 83e6 0700 
+
+  0x0000792e190ab474: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab474: 004d 8997 | c801 0000 | 410f 0d8a | 0001 0000 | 48c7 0001 | 0000 0041 | 0f0d 8a40 
+
+  0x0000792e190ab490: ;   {metadata({type array int})}
+  0x0000792e190ab490: 0100 00c7 | 4008 c80d | 040a 410f | 0d8a 8001 | 0000 c740 | 0c05 0000 
+
+  0x0000792e190ab4a8: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ab4a8: 0049 ba08 | 0000 0004 | 0000 00b9 | 0100 0000 | 49bb 0500 | 0000 0300 | 0000 4c89 
+
+  0x0000792e190ab4c4: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@10 (line 11)
+  0x0000792e190ab4c4: 5810 4c89 
+
+  0x0000792e190ab4c8: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@19 (line 11)
+  0x0000792e190ab4c8: 5018 48c7 | 4020 0200 
+
+  0x0000792e190ab4d0: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ab4d0: 0000 4889 
+
+  0x0000792e190ab4d4: ;*synchronization entry
+                      ; - Test9::mergeSort@-1 (line 17)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab4d4: 4424 1048 | 8bf0 33d2 
+
+  0x0000792e190ab4dc: ;   {static_call}
+  0x0000792e190ab4dc: 488b e8e8 
+
+  0x0000792e190ab4e0: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab4e0: 7c34 faff 
+
+  0x0000792e190ab4e4: ;   {post_call_nop}
+  0x0000792e190ab4e4: 0f1f 8400 
+
+  0x0000792e190ab4e8: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab4e8: 5c02 0000 | 488b f5ba | 0200 0000 | b902 0000 
+
+  0x0000792e190ab4f8: ;   {static_call}
+  0x0000792e190ab4f8: 0066 90e8 
+
+  0x0000792e190ab4fc: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab4fc: 6034 faff 
+
+  0x0000792e190ab500: ;   {post_call_nop}
+  0x0000792e190ab500: 0f1f 8400 | 7802 0001 | 4d8b 8fc8 | 0100 004d | 8bd1 4983 | c220 4d3b | 97d8 0100 | 000f 835a 
+  0x0000792e190ab520: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab520: 0700 004d | 8997 c801 | 0000 410f | 0d8a 0001 | 0000 49c7 | 0101 0000 | 0041 0f0d | 8a40 0100 
+  0x0000792e190ab540: ;   {metadata({type array int})}
+  0x0000792e190ab540: 0041 c741 | 08c8 0d04 | 0a41 0f0d | 8a80 0100 | 0041 c741 | 0c03 0000 | 004d 8961 | 104d 8961 
+  0x0000792e190ab560: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab560: 1841 ba02 | 0000 0045 | 33db 33ff | eb1a 6690 | 4189 6cb9 
+
+  0x0000792e190ab574: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab574: 1049 8b57 
+
+  0x0000792e190ab578: ; ImmutableOopMap {r9=Oop rcx=Oop [16]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ab578: 3085 0241 | 83fb 010f | 8fb0 0000 
+
+  0x0000792e190ab584: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab584: 0041 8bf8 | 4183 fa02 | 0f8f 9b00 
+
+  0x0000792e190ab590: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@29 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab590: 0000 4183 | fb05 0f83 | 5007 0000 | 488b 4c24 | 1042 8b5c 
+
+  0x0000792e190ab5a4: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab5a4: 9910 4183 | fa05 0f83 | 6007 0000 | 428b 6c91 
+
+  0x0000792e190ab5b4: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab5b4: 1044 8d47 | 013b dd7f 
+
+  0x0000792e190ab5bc: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@40 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab5bc: 1941 ffc3 | 83ff 030f | 8317 0800 | 0041 895c 
+
+  0x0000792e190ab5cc: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab5cc: b910 498b 
+
+  0x0000792e190ab5d0: ; ImmutableOopMap {r9=Oop rcx=Oop [16]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ab5d0: 5730 8502 | eba5 41ff 
+
+  0x0000792e190ab5d8: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@71 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab5d8: c283 ff03 | 7292 bee4 | ffff ff44 | 891c 2444 | 8954 2404 | 4489 4424 | 0889 7c24 | 0c4c 894c 
+  0x0000792e190ab5f8: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190ab5f8: 2430 90e8 
+
+  0x0000792e190ab5fc: ; ImmutableOopMap {[16]=Oop [48]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@75 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab5fc: 605c fdff 
+
+  0x0000792e190ab600: ;   {post_call_nop}
+  0x0000792e190ab600: 0f1f 8400 
+
+  0x0000792e190ab604: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@75 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab604: 7803 0004 | 0f1f 8400 | 0000 0000 | 4189 7c98 
+
+  0x0000792e190ab614: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab614: 1049 8b7f 
+
+  0x0000792e190ab618: ; ImmutableOopMap {r8=Oop rbp=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ab618: 3085 0741 | 83f9 030f | 8f1b 0200 
+
+  0x0000792e190ab624: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab624: 0041 8bdb | e95e 0100 | 0044 8bc7 | 488b 4c24 
+
+  0x0000792e190ab634: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab634: 1041 83fb | 010f 8f8b 
+
+  0x0000792e190ab63c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab63c: 0000 0041 | 83fb 050f | 8323 0800 | 0041 8bf8 
+
+  0x0000792e190ab64c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab64c: 412b fb49 | 63db 4863 | d748 03da | 4883 fb03 | 0f83 0a08 | 0000 4883 | c201 4883 | fa03 0f83 
+  0x0000792e190ab66c: fc07 0000 | 4183 fb01 | 0f8d 2208 | 0000 ba02 | 0000 0041 | 2bd3 33db | 4183 fb02 | 0f4f d381 
+  0x0000792e190ab68c: fae8 0300 | 00bb e803 | 0000 0f47 | d341 03d3 
+
+  0x0000792e190ab69c: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@85 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab69c: 0f1f 4000 | 428b 7499 | 1045 8d04 | 3b43 8974 
+
+  0x0000792e190ab6ac: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@99 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab6ac: 8110 41ff 
+
+  0x0000792e190ab6b0: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@95 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab6b0: c344 3bda 
+
+  0x0000792e190ab6b4: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab6b4: 7cea 498b | 4730 418b 
+
+  0x0000792e190ab6bc: ; ImmutableOopMap {r9=Oop rcx=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ab6bc: f0ff c685 
+
+  0x0000792e190ab6c0: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab6c0: 0041 83fb | 027c b341 
+
+  0x0000792e190ab6c8: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab6c8: ffc0 4183 | fa02 0f8e | e403 0000 
+
+  0x0000792e190ab6d4: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab6d4: 488b e945 | 8b51 1044 | 8955 1045 | 8b59 1444 | 895d 1445 | 8b51 1844 
+
+  0x0000792e190ab6ec: ;*synchronization entry
+                      ; - Test9::mergeSort@-1 (line 17)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab6ec: 8955 1848 | 8bf5 ba03 | 0000 00b9 | 0300 0000 
+
+  0x0000792e190ab6fc: ;   {static_call}
+  0x0000792e190ab6fc: 6666 90e8 
+
+  0x0000792e190ab700: ; ImmutableOopMap {rbp=Oop }
+                      ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab700: 5c32 faff 
+
+  0x0000792e190ab704: ;   {post_call_nop}
+  0x0000792e190ab704: 0f1f 8400 
+
+  0x0000792e190ab708: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab708: 7c04 0007 | 488b f5ba | 0400 0000 | b904 0000 
+
+  0x0000792e190ab718: ;   {static_call}
+  0x0000792e190ab718: 0066 90e8 
+
+  0x0000792e190ab71c: ; ImmutableOopMap {rbp=Oop }
+                      ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab71c: 4032 faff 
+
+  0x0000792e190ab720: ;   {post_call_nop}
+  0x0000792e190ab720: 0f1f 8400 | 9804 0008 | 4d8b 87c8 | 0100 004d | 8bd0 4983 | c218 4d3b | 97d8 0100 | 000f 8361 
+  0x0000792e190ab740: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab740: 0500 004d | 8997 c801 | 0000 410f | 0d8a 0001 | 0000 49c7 | 0001 0000 | 0041 0f0d | 8a40 0100 
+  0x0000792e190ab760: ;   {metadata({type array int})}
+  0x0000792e190ab760: 0041 c740 | 08c8 0d04 | 0a41 0f0d | 8a80 0100 | 0041 c740 | 0c02 0000 | 004d 8960 
+
+  0x0000792e190ab77c: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab77c: 1041 ba04 | 0000 0041 | b903 0000 
+
+  0x0000792e190ab788: ;*iload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@26 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab788: 0033 db41 | 83fa 040f | 8fa8 0000 
+
+  0x0000792e190ab794: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@29 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab794: 0041 83f9 | 050f 8399 | 0500 0042 
+
+  0x0000792e190ab7a0: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab7a0: 8b4c 8d10 | 4183 fa05 | 0f83 b205 | 0000 428b 
+
+  0x0000792e190ab7b0: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab7b0: 7c95 1044 | 8d5b 013b 
+
+  0x0000792e190ab7b8: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@40 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab7b8: cf7f 1c41 
+
+  0x0000792e190ab7bc: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@53 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab7bc: ffc1 83fb | 020f 8345 | 0600 0041 
+
+  0x0000792e190ab7c8: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab7c8: 894c 9810 
+
+  0x0000792e190ab7cc: ; ImmutableOopMap {r8=Oop rbp=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab7cc: 498b 7f30 
+
+  0x0000792e190ab7d0: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ab7d0: 8507 e944 | feff ff41 
+
+  0x0000792e190ab7d8: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@71 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab7d8: ffc2 83fb | 020f 822d | feff ffbe | e4ff ffff | 4489 4c24 | 1844 8954 | 241c 4489 | 5c24 204c 
+  0x0000792e190ab7f8: 8944 2428 | 895c 2424 | 897c 2430 
+
+  0x0000792e190ab804: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190ab804: 6666 90e8 
+
+  0x0000792e190ab808: ; ImmutableOopMap {rbp=Oop [40]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@75 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab808: 545a fdff 
+
+  0x0000792e190ab80c: ;   {post_call_nop}
+  0x0000792e190ab80c: 0f1f 8400 
+
+  0x0000792e190ab810: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@75 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab810: 8405 000a | 0f1f 8400 | 0000 0000 | 6666 6690 | 4189 548a 
+
+  0x0000792e190ab824: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab824: 1049 8b5f 
+
+  0x0000792e190ab828: ; ImmutableOopMap {r10=Oop rbp=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ab828: 3085 0341 | 83f9 020f | 8f34 0100 
+
+  0x0000792e190ab834: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab834: 0041 8bc8 | e91f 0100 
+
+  0x0000792e190ab83c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab83c: 0044 8bdb | 4183 f903 | 0f8f 9000 
+
+  0x0000792e190ab848: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab848: 0000 4183 | f905 0f83 | 7806 0000 | 418b db41 
+
+  0x0000792e190ab858: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab858: 2bd9 4963 | c948 63fb | 4803 cf48 | 83f9 020f | 835f 0600 | 0048 83c7 | 0348 83ff | 020f 8351 
+  0x0000792e190ab878: 0600 0041 | 83f9 030f | 8d6f 0600 | 00bf 0400 | 0000 412b | f933 c941 | 83f9 040f | 4ff9 81ff 
+  0x0000792e190ab898: e803 0000 | b9e8 0300 | 000f 47f9 | 4103 f966 | 0f1f 8400 
+
+  0x0000792e190ab8ac: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@85 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab8ac: 0000 0000 | 428b 4c8d | 1045 8d1c | 1943 894c 
+
+  0x0000792e190ab8bc: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@99 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab8bc: 9810 41ff 
+
+  0x0000792e190ab8c0: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@95 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab8c0: c144 3bcf 
+
+  0x0000792e190ab8c4: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab8c4: 7cea 498b | 7730 418b 
+
+  0x0000792e190ab8cc: ; ImmutableOopMap {r8=Oop rbp=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ab8cc: fbff c785 
+
+  0x0000792e190ab8d0: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab8d0: 0641 83f9 | 047c ae41 
+
+  0x0000792e190ab8d8: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab8d8: ffc3 4183 | fa04 0f8e 
+
+  0x0000792e190ab8e0: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab8e0: 6302 0000 | 458b 5010 
+
+  0x0000792e190ab8e8: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab8e8: 4489 551c | 4d8b 97c8 | 0100 0045 | 8b40 1444 
+
+  0x0000792e190ab8f8: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@148 (line 34)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab8f8: 8945 204d | 8bda 4983 | c328 4d3b | 9fd8 0100 | 000f 83b9 
+
+  0x0000792e190ab90c: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab90c: 0300 004d | 899f c801 | 0000 410f | 0d8b 0001 | 0000 49c7 | 0201 0000 | 0041 0f0d | 8b40 0100 
+  0x0000792e190ab92c: ;   {metadata({type array int})}
+  0x0000792e190ab92c: 0041 c742 | 08c8 0d04 | 0a41 0f0d | 8b80 0100 | 0041 c742 | 0c05 0000 | 004d 8962 | 104d 8962 
+  0x0000792e190ab94c: 184d 8962 
+
+  0x0000792e190ab950: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab950: 2041 bb03 | 0000 0045 
+
+  0x0000792e190ab958: ;*iload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@26 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab958: 33c9 33c9 | 4183 fb04 | 0f8e d500 
+
+  0x0000792e190ab964: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@29 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab964: 0000 448b 
+
+  0x0000792e190ab968: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab968: c141 83f9 | 020f 8f87 
+
+  0x0000792e190ab970: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab970: 0000 0041 | 83f9 050f | 839f 0500 | 0041 8bd8 
+
+  0x0000792e190ab980: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab980: 412b d949 | 63c9 4863 | fb48 03cf | 4883 f905 | 0f83 8605 | 0000 4883 | c702 4883 | ff05 0f83 
+  0x0000792e190ab9a0: 7805 0000 | 4183 f902 | 0f8d 9605 | 0000 b903 | 0000 0041 | 2bc9 33ff | 4183 f903 | 0f4f cf81 
+  0x0000792e190ab9c0: f9e8 0300 | 00bf e803 | 0000 0f47 
+
+  0x0000792e190ab9cc: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@85 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab9cc: cf41 03c9 | 428b 7c8d | 1045 8d04 | 1943 897c 
+
+  0x0000792e190ab9dc: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@99 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab9dc: 8210 41ff 
+
+  0x0000792e190ab9e0: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@95 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab9e0: c144 3bc9 
+
+  0x0000792e190ab9e4: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab9e4: 7cea 498b | 7f30 418b 
+
+  0x0000792e190ab9ec: ; ImmutableOopMap {r10=Oop rbp=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ab9ec: d0ff c285 
+
+  0x0000792e190ab9f0: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab9f0: 0741 83f9 | 037c b741 
+
+  0x0000792e190ab9f8: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ab9f8: ffc0 4183 | fb04 0f8e 
+
+  0x0000792e190aba00: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aba00: cd01 0000 
+
+  0x0000792e190aba04: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@147 (line 34)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aba04: 418b 4210 | 8945 1045 | 8b5a 1444 | 895d 1445 | 8b42 1844 | 8945 1845 | 8b5a 1c44 | 895d 1c45 
+  0x0000792e190aba24: 8b5a 2044 
+
+  0x0000792e190aba28: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@148 (line 34)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aba28: 895d 2048 | 83c4 505d 
+
+  0x0000792e190aba30: ;   {poll_return}
+  0x0000792e190aba30: 493b 6728 | 0f87 4a06 | 0000 c341 | 83f9 050f | 8347 0300 | 0042 8b5c 
+
+  0x0000792e190aba48: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aba48: 8d10 4183 | fb05 0f83 | 6003 0000 | 428b 549d 
+
+  0x0000792e190aba58: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aba58: 1044 8d41 | 013b da7f 
+
+  0x0000792e190aba60: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@40 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aba60: 1c41 ffc1 | 83f9 050f | 83cf 0300 | 0041 895c 
+
+  0x0000792e190aba70: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aba70: 8a10 498b 
+
+  0x0000792e190aba74: ; ImmutableOopMap {r10=Oop rbp=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190aba74: 5f30 8503 | e9ae fdff 
+
+  0x0000792e190aba7c: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@71 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aba7c: ff41 ffc3 | 83f9 050f | 8297 fdff | ffbe e4ff | ffff 4489 | 4c24 1044 | 895c 2414 | 4489 4424 
+  0x0000792e190aba9c: 184c 8954 | 2420 894c | 241c 8954 
+
+  0x0000792e190abaa8: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abaa8: 2428 90e8 
+
+  0x0000792e190abaac: ; ImmutableOopMap {rbp=Oop [32]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@75 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abaac: b057 fdff 
+
+  0x0000792e190abab0: ;   {post_call_nop}
+  0x0000792e190abab0: 0f1f 8400 
+
+  0x0000792e190abab4: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@75 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abab4: 2808 000f | 4183 fa05 | 0f83 aa04 | 0000 418b 
+
+  0x0000792e190abac4: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abac4: d841 2bda | 4d63 da48 | 63fb 4c03 | df49 83fb | 030f 8391 | 0400 0048 | 83c7 0248 | 83ff 030f 
+  0x0000792e190abae4: 8383 0400 | 0041 83fa | 020f 8da5 | 0400 0041 | b803 0000 | 0045 2bc2 | 4533 db41 | 83fa 0345 
+  0x0000792e190abb04: 0f4f c341 | 81f8 e803 | 0000 41bb | e803 0000 | 450f 47c3 
+
+  0x0000792e190abb18: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@109 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abb18: 4503 c242 | 8b7c 9110 | 418d 141a | 4189 7c91 
+
+  0x0000792e190abb28: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@123 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abb28: 1041 ffc2 | 453b d07c 
+
+  0x0000792e190abb30: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abb30: ea49 8b7f 
+
+  0x0000792e190abb34: ; ImmutableOopMap {r9=Oop rcx=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190abb34: 30ff c285 
+
+  0x0000792e190abb38: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abb38: 0741 83fa | 037c b448 | 8be9 e990 | fbff ff41 | 83fa 050f | 8373 0400 | 0041 8bcb 
+
+  0x0000792e190abb54: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abb54: 412b ca4d | 63ca 4863 | d94c 03cb | 4983 f902 | 0f83 5a04 | 0000 4883 | c304 4883 | fb02 0f83 
+  0x0000792e190abb74: 4c04 0000 | 4183 fa04 | 0f8d 6604 | 0000 bf05 | 0000 0041 | 2bfa 4533 | db41 83fa | 0541 0f4f 
+  0x0000792e190abb94: fb81 ffe8 | 0300 0041 | bbe8 0300 | 0041 0f47 
+
+  0x0000792e190abba4: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@109 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abba4: fb41 03fa | 468b 4c95 | 1041 8d1c | 0a45 894c 
+
+  0x0000792e190abbb4: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@123 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abbb4: 9810 41ff 
+
+  0x0000792e190abbb8: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@119 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abbb8: c244 3bd7 
+
+  0x0000792e190abbbc: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abbbc: 7cea 498b 
+
+  0x0000792e190abbc0: ; ImmutableOopMap {r8=Oop rbp=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abbc0: 7f30 ffc3 
+
+  0x0000792e190abbc4: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190abbc4: 8507 4183 | fa05 7cb6 | e913 fdff | ff41 83fb | 050f 8331 | 0400 0045 | 8bc8 452b 
+
+  0x0000792e190abbe0: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abbe0: cb49 63cb | 4963 d948 | 03cb 4883 | f905 0f83 | 1804 0000 | 4883 c304 | 4883 fb05 | 0f83 0a04 
+  0x0000792e190abc00: 0000 4183 | fb04 0f8d | 2404 0000 | bf05 0000 | 0041 2bfb | 4533 c041 | 83fb 0541 | 0f4f f881 
+  0x0000792e190abc20: ffe8 0300 | 0041 b8e8 | 0300 0041 | 0f47 f841 
+
+  0x0000792e190abc30: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@109 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abc30: 03fb 468b | 449d 1043 | 8d1c 0b45 
+
+  0x0000792e190abc3c: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@123 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abc3c: 8944 9a10 
+
+  0x0000792e190abc40: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@119 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abc40: 41ff c344 
+
+  0x0000792e190abc44: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abc44: 3bdf 7cea | 498b 4f30 
+
+  0x0000792e190abc4c: ; ImmutableOopMap {r10=Oop rbp=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190abc4c: ffc3 8501 | 4183 fb05 | 7cb6 e9a9 
+
+  0x0000792e190abc58: ;   {metadata({type array int})}
+  0x0000792e190abc58: fdff ff48 | bec8 0d04 | 0a00 0000 | 00ba 0500 
+
+  0x0000792e190abc68: ;   {runtime_call C2 Runtime new_array}
+  0x0000792e190abc68: 0000 90e8 
+
+  0x0000792e190abc6c: ; ImmutableOopMap {}
+                      ;*newarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190abc6c: f06a fdff 
+
+  0x0000792e190abc70: ;   {post_call_nop}
+  0x0000792e190abc70: 0f1f 8400 
+
+  0x0000792e190abc74: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190abc74: e809 0013 | e92c f8ff 
+
+  0x0000792e190abc7c: ;   {metadata({type array int})}
+  0x0000792e190abc7c: ff48 bec8 | 0d04 0a00 | 0000 00ba | 0300 0000 
+
+  0x0000792e190abc8c: ;   {runtime_call C2 Runtime new_array}
+  0x0000792e190abc8c: 6666 90e8 
+
+  0x0000792e190abc90: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*newarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abc90: cc6a fdff 
+
+  0x0000792e190abc94: ;   {post_call_nop}
+  0x0000792e190abc94: 0f1f 8400 
+
+  0x0000792e190abc98: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abc98: 0c0a 0014 | 4c8b c8e9 | bdf8 ffff 
+
+  0x0000792e190abca4: ;   {metadata({type array int})}
+  0x0000792e190abca4: 48be c80d | 040a 0000 | 0000 ba02 
+
+  0x0000792e190abcb0: ;   {runtime_call C2 Runtime new_array}
+  0x0000792e190abcb0: 0000 00e8 
+
+  0x0000792e190abcb4: ; ImmutableOopMap {rbp=Oop }
+                      ;*newarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abcb4: a86a fdff 
+
+  0x0000792e190abcb8: ;   {post_call_nop}
+  0x0000792e190abcb8: 0f1f 8400 
+
+  0x0000792e190abcbc: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abcbc: 300a 0015 | 4c8b c0e9 
+
+  0x0000792e190abcc4: ;*synchronization entry
+                      ; - Test9::merge@-1 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abcc4: b5fa ffff 
+
+  0x0000792e190abcc8: ;   {metadata({type array int})}
+  0x0000792e190abcc8: 48be c80d | 040a 0000 | 0000 ba05 
+
+  0x0000792e190abcd4: ;   {runtime_call C2 Runtime new_array}
+  0x0000792e190abcd4: 0000 00e8 
+
+  0x0000792e190abcd8: ; ImmutableOopMap {rbp=Oop }
+                      ;*newarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abcd8: 846a fdff 
+
+  0x0000792e190abcdc: ;   {post_call_nop}
+  0x0000792e190abcdc: 0f1f 8400 
+
+  0x0000792e190abce0: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abce0: 540a 0016 | 4c8b d0e9 | 65fc ffff | bee4 ffff | ff44 8914 | 2489 7c24 | 0444 895c | 2408 4c89 
+  0x0000792e190abd00: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abd00: 4c24 28e8 
+
+  0x0000792e190abd04: ; ImmutableOopMap {[16]=Oop [40]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abd04: 5855 fdff 
+
+  0x0000792e190abd08: ;   {post_call_nop}
+  0x0000792e190abd08: 0f1f 8400 | 800a 0017 | bee4 ffff | ff41 8beb | 897c 2404 | 4489 5424 | 084c 894c | 2428 895c 
+  0x0000792e190abd28: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abd28: 240c 90e8 
+
+  0x0000792e190abd2c: ; ImmutableOopMap {[16]=Oop [40]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abd2c: 3055 fdff 
+
+  0x0000792e190abd30: ;   {post_call_nop}
+  0x0000792e190abd30: 0f1f 8400 | a80a 0018 | bee4 ffff | ff4c 8944 | 2410 4489 | 5424 1c89 | 5c24 2044 | 894c 2424 
+  0x0000792e190abd50: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abd50: 6666 90e8 
+
+  0x0000792e190abd54: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abd54: 0855 fdff 
+
+  0x0000792e190abd58: ;   {post_call_nop}
+  0x0000792e190abd58: 0f1f 8400 | d00a 0019 | bee4 ffff | ff4c 8944 | 2410 4489 | 4c24 1889 | 5c24 2089 | 4c24 2444 
+  0x0000792e190abd78: 8954 2430 
+
+  0x0000792e190abd7c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abd7c: 6666 90e8 
+
+  0x0000792e190abd80: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abd80: dc54 fdff 
+
+  0x0000792e190abd84: ;   {post_call_nop}
+  0x0000792e190abd84: 0f1f 8400 | fc0a 001a | bee4 ffff | ff4c 8954 | 2408 4489 | 5c24 1489 | 4c24 1844 | 894c 241c 
+  0x0000792e190abda4: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abda4: 6666 90e8 
+
+  0x0000792e190abda8: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abda8: b454 fdff 
+
+  0x0000792e190abdac: ;   {post_call_nop}
+  0x0000792e190abdac: 0f1f 8400 | 240b 001b | bee4 ffff | ff4c 8954 | 2408 4489 | 4c24 1089 | 4c24 1889 | 5c24 1c44 
+  0x0000792e190abdcc: 895c 2428 
+
+  0x0000792e190abdd0: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abdd0: 6666 90e8 
+
+  0x0000792e190abdd4: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abdd4: 8854 fdff 
+
+  0x0000792e190abdd8: ;   {post_call_nop}
+  0x0000792e190abdd8: 0f1f 8400 | 500b 001c | bee4 ffff | ff41 8beb | 4489 1424 | 4489 4424 | 0489 7c24 | 084c 894c 
+  0x0000792e190abdf8: 2430 895c 
+
+  0x0000792e190abdfc: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abdfc: 240c 90e8 
+
+  0x0000792e190abe00: ; ImmutableOopMap {[16]=Oop [48]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@57 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abe00: 5c54 fdff 
+
+  0x0000792e190abe04: ;   {post_call_nop}
+  0x0000792e190abe04: 0f1f 8400 | 7c0b 001d | bee4 ffff | ff44 894c | 2418 4489 | 5424 1c44 | 895c 2420 | 4c89 4424 
+  0x0000792e190abe24: 2889 5c24 | 2489 4c24 
+
+  0x0000792e190abe2c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abe2c: 3066 90e8 
+
+  0x0000792e190abe30: ; ImmutableOopMap {rbp=Oop [40]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@57 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abe30: 2c54 fdff 
+
+  0x0000792e190abe34: ;   {post_call_nop}
+  0x0000792e190abe34: 0f1f 8400 | ac0b 001e | bee4 ffff | ff44 894c | 2410 4489 | 5c24 1444 | 8944 2418 | 4c89 5424 
+  0x0000792e190abe54: 2089 4c24 | 1c89 5c24 
+
+  0x0000792e190abe5c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abe5c: 2866 90e8 
+
+  0x0000792e190abe60: ; ImmutableOopMap {rbp=Oop [32]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@57 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abe60: fc53 fdff 
+
+  0x0000792e190abe64: ;   {post_call_nop}
+  0x0000792e190abe64: 0f1f 8400 
+
+  0x0000792e190abe68: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abe68: dc0b 001f | be76 ffff | ff44 8914 | 2444 8944 | 2404 4489 | 5c24 0848 | 894c 2418 | 4889 4c24 
+  0x0000792e190abe88: 204c 894c 
+
+  0x0000792e190abe8c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abe8c: 2428 90e8 
+
+  0x0000792e190abe90: ; ImmutableOopMap {[24]=Oop [32]=Oop [40]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abe90: cc53 fdff 
+
+  0x0000792e190abe94: ;   {post_call_nop}
+  0x0000792e190abe94: 0f1f 8400 
+
+  0x0000792e190abe98: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abe98: 0c0c 0020 | be6e ffff | ff44 8914 | 2444 8944 | 2404 4489 | 5c24 0848 | 894c 2418 | 4889 4c24 
+  0x0000792e190abeb8: 204c 894c 
+
+  0x0000792e190abebc: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abebc: 2428 90e8 
+
+  0x0000792e190abec0: ; ImmutableOopMap {[24]=Oop [32]=Oop [40]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abec0: 9c53 fdff 
+
+  0x0000792e190abec4: ;   {post_call_nop}
+  0x0000792e190abec4: 0f1f 8400 
+
+  0x0000792e190abec8: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abec8: 3c0c 0021 | be76 ffff | ff4c 8944 | 2410 4489 | 5424 1c44 | 895c 2420 | 4489 4c24 
+
+  0x0000792e190abee4: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abee4: 2466 90e8 
+
+  0x0000792e190abee8: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abee8: 7453 fdff 
+
+  0x0000792e190abeec: ;   {post_call_nop}
+  0x0000792e190abeec: 0f1f 8400 
+
+  0x0000792e190abef0: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abef0: 640c 0022 | be6e ffff | ff4c 8944 | 2410 4489 | 5424 1c44 | 895c 2420 | 4489 4c24 
+
+  0x0000792e190abf0c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abf0c: 2466 90e8 
+
+  0x0000792e190abf10: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abf10: 4c53 fdff 
+
+  0x0000792e190abf14: ;   {post_call_nop}
+  0x0000792e190abf14: 0f1f 8400 
+
+  0x0000792e190abf18: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abf18: 8c0c 0023 | be76 ffff | ff4c 8954 | 2408 4489 | 5c24 1444 | 8944 2418 | 4489 4c24 
+
+  0x0000792e190abf34: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abf34: 1c66 90e8 
+
+  0x0000792e190abf38: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abf38: 2453 fdff 
+
+  0x0000792e190abf3c: ;   {post_call_nop}
+  0x0000792e190abf3c: 0f1f 8400 
+
+  0x0000792e190abf40: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abf40: b40c 0024 | be6e ffff | ff4c 8954 | 2408 4489 | 5c24 1444 | 8944 2418 | 4489 4c24 
+
+  0x0000792e190abf5c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abf5c: 1c66 90e8 
+
+  0x0000792e190abf60: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abf60: fc52 fdff 
+
+  0x0000792e190abf64: ;   {post_call_nop}
+  0x0000792e190abf64: 0f1f 8400 
+
+  0x0000792e190abf68: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abf68: dc0c 0025 | be76 ffff | ff44 8904 | 2444 8954 | 2404 4889 | 4c24 1048 | 894c 2418 | 4c89 4c24 
+  0x0000792e190abf88: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abf88: 2066 90e8 
+
+  0x0000792e190abf8c: ; ImmutableOopMap {[16]=Oop [24]=Oop [32]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abf8c: d052 fdff 
+
+  0x0000792e190abf90: ;   {post_call_nop}
+  0x0000792e190abf90: 0f1f 8400 
+
+  0x0000792e190abf94: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abf94: 080d 0026 | be6e ffff | ff44 8904 | 2444 8954 | 2404 4889 | 4c24 1048 | 894c 2418 | 4c89 4c24 
+  0x0000792e190abfb4: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abfb4: 2066 90e8 
+
+  0x0000792e190abfb8: ; ImmutableOopMap {[16]=Oop [24]=Oop [32]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abfb8: a452 fdff 
+
+  0x0000792e190abfbc: ;   {post_call_nop}
+  0x0000792e190abfbc: 0f1f 8400 
+
+  0x0000792e190abfc0: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abfc0: 340d 0027 | be76 ffff | ff4c 8944 | 2410 4489 | 5c24 1c44 | 8954 2420 
+
+  0x0000792e190abfd8: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abfd8: 6666 90e8 
+
+  0x0000792e190abfdc: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abfdc: 8052 fdff 
+
+  0x0000792e190abfe0: ;   {post_call_nop}
+  0x0000792e190abfe0: 0f1f 8400 
+
+  0x0000792e190abfe4: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190abfe4: 580d 0028 | be6e ffff | ff4c 8944 | 2410 4489 | 5c24 1c44 | 8954 2420 
+
+  0x0000792e190abffc: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190abffc: 6666 90e8 
+
+  0x0000792e190ac000: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac000: 5c52 fdff 
+
+  0x0000792e190ac004: ;   {post_call_nop}
+  0x0000792e190ac004: 0f1f 8400 
+
+  0x0000792e190ac008: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac008: 7c0d 0029 | be76 ffff | ff4c 8954 | 2408 4489 | 4424 1444 | 895c 2418 
+
+  0x0000792e190ac020: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190ac020: 6666 90e8 
+
+  0x0000792e190ac024: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac024: 3852 fdff 
+
+  0x0000792e190ac028: ;   {post_call_nop}
+  0x0000792e190ac028: 0f1f 8400 
+
+  0x0000792e190ac02c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac02c: a00d 002a | be6e ffff | ff4c 8954 | 2408 4489 | 4424 1444 | 895c 2418 
+
+  0x0000792e190ac044: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190ac044: 6666 90e8 
+
+  0x0000792e190ac048: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*if_icmpgt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac048: 1452 fdff 
+
+  0x0000792e190ac04c: ;   {post_call_nop}
+  0x0000792e190ac04c: 0f1f 8400 
+
+  0x0000792e190ac050: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac050: c40d 002b | 488b f0eb 
+
+  0x0000792e190ac058: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac058: 2148 8bf0 
+
+  0x0000792e190ac05c: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac05c: eb1c 488b 
+
+  0x0000792e190ac060: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ac060: f0eb 1748 
+
+  0x0000792e190ac064: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac064: 8bf0 eb12 | 488b f0eb 
+
+  0x0000792e190ac06c: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac06c: 0d48 8bf0 
+
+  0x0000792e190ac070: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac070: eb08 488b 
+
+  0x0000792e190ac074: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac074: f0eb 0348 
+
+  0x0000792e190ac078: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ac078: 8bf0 4883 
+
+  0x0000792e190ac07c: ;   {runtime_call C2 Runtime rethrow}
+  0x0000792e190ac07c: c450 5de9 | dce0 fdff 
+
+  0x0000792e190ac084: ;   {internal_word}
+  0x0000792e190ac084: 49ba 30ba | 0a19 2e79 | 0000 4d89 | 9760 0400 
+
+  0x0000792e190ac094: ;   {runtime_call SafepointBlob}
+  0x0000792e190ac094: 00e9 c698 
+
+  0x0000792e190ac098: ;   {runtime_call StubRoutines (final stubs)}
+  0x0000792e190ac098: faff e821 | b4f8 ffe9 | b6f3 ffff | f4f4 f4f4 
+[Stub Code]
+  0x0000792e190ac0a8: ;   {no_reloc}
+  0x0000792e190ac0a8: 48bb 0000 | 0000 0000 
+
+  0x0000792e190ac0b0: ;   {runtime_call nmethod}
+  0x0000792e190ac0b0: 0000 e9fb 
+
+  0x0000792e190ac0b4: ;   {runtime_call ExceptionBlob}
+  0x0000792e190ac0b4: ffff ffe9 | a454 fdff 
+[Deopt Handler Code]
+  0x0000792e190ac0bc: e800 0000 | 0048 832c 
+
+  0x0000792e190ac0c4: ;   {runtime_call DeoptimizationBlob}
+  0x0000792e190ac0c4: 2405 e935 | 8efa fff4 | f4f4 f4f4 
+[/MachCode]
+                            @ 31   Test9::mergeSort (33 bytes)   inline (hot)
+                              @ 14   Test9::mergeSort (33 bytes)   inline (hot)
+                                @ 14   Test9::mergeSort (33 bytes)   failed to inline: recursive inlining is too deep
+                                @ 22   Test9::mergeSort (33 bytes)   failed to inline: recursive inlining is too deep
+                                @ 29   Test9::merge (156 bytes)   inline (hot)
+                              @ 22   Test9::mergeSort (33 bytes)   inline (hot)
+                                @ 14   Test9::mergeSort (33 bytes)   failed to inline: recursive inlining is too deep
+                                @ 22   Test9::mergeSort (33 bytes)   failed to inline: recursive inlining is too deep
+                                @ 29   Test9::merge (156 bytes)   inline (hot)
+                              @ 29   Test9::merge (156 bytes)   inline (hot)
+634   25    b        Test9::test (38 bytes)
+
+============================= C2-compiled nmethod ==============================
+----------------------------------- Assembly -----------------------------------
+
+Compiled method (c2) 665   25             Test9::test (38 bytes)
+ total in heap  [0x0000792e190ac108,0x0000792e190aced0] = 3528
+ relocation     [0x0000792e190ac1e0,0x0000792e190ac2c0] = 224
+ main code      [0x0000792e190ac2c0,0x0000792e190ace80] = 3008
+ stub code      [0x0000792e190ace80,0x0000792e190acea8] = 40
+ oops           [0x0000792e190acea8,0x0000792e190aceb0] = 8
+ metadata       [0x0000792e190aceb0,0x0000792e190aced0] = 32
+ immutable data [0x0000792dd827b8a0,0x0000792dd827ca68] = 4552
+ dependencies   [0x0000792dd827b8a0,0x0000792dd827b8a8] = 8
+ handler table  [0x0000792dd827b8a8,0x0000792dd827b968] = 192
+ scopes pcs     [0x0000792dd827b968,0x0000792dd827c318] = 2480
+ scopes data    [0x0000792dd827c318,0x0000792dd827ca68] = 1872
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Verified Entry Point]
+  # {method} {0x0000792df8605420} 'test' '(I)I' in 'Test9'
+  # parm0:    rsi       = int
+  #           [sp+0x60]  (sp of caller)
+  0x0000792e190ac2c0: 8984 2400 | c0fe ff55 | 4883 ec50 | 4181 7f20 | 0000 0000 | 0f85 9c0b | 0000 498b | 87c8 0100 
+  0x0000792e190ac2e0: 004c 8bd0 | 4983 c228 | 4d3b 97d8 | 0100 000f | 8368 0600 
+
+  0x0000792e190ac2f4: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac2f4: 004d 8997 | c801 0000 | 410f 0d8a | 0001 0000 | 48c7 0001 | 0000 0041 | 0f0d 8a40 
+
+  0x0000792e190ac310: ;   {metadata({type array int})}
+  0x0000792e190ac310: 0100 00c7 | 4008 c80d | 040a 410f | 0d8a 8001 | 0000 c740 | 0c05 0000 
+
+  0x0000792e190ac328: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ac328: 0049 ba08 | 0000 0004 | 0000 0049 | bb05 0000 | 0003 0000 | 004c 8958 
+
+  0x0000792e190ac340: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@10 (line 11)
+  0x0000792e190ac340: 104c 8950 
+
+  0x0000792e190ac344: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@19 (line 11)
+  0x0000792e190ac344: 1848 c740 | 2002 0000 
+
+  0x0000792e190ac34c: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ac34c: 0048 8944 
+
+  0x0000792e190ac350: ;*synchronization entry
+                      ; - Test9::mergeSort@-1 (line 17)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac350: 2410 488b | f033 d2b9 | 0100 0000 
+
+  0x0000792e190ac35c: ;   {static_call}
+  0x0000792e190ac35c: 488b e8e8 
+
+  0x0000792e190ac360: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac360: fc25 faff 
+
+  0x0000792e190ac364: ;   {post_call_nop}
+  0x0000792e190ac364: 0f1f 8400 
+
+  0x0000792e190ac368: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac368: 5c02 0000 | 488b f5ba | 0200 0000 | b902 0000 
+
+  0x0000792e190ac378: ;   {static_call}
+  0x0000792e190ac378: 0066 90e8 
+
+  0x0000792e190ac37c: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac37c: e025 faff 
+
+  0x0000792e190ac380: ;   {post_call_nop}
+  0x0000792e190ac380: 0f1f 8400 | 7802 0001 | 4d8b 9fc8 | 0100 004d | 8bd3 4983 | c220 4d3b | 97d8 0100 | 000f 83de 
+  0x0000792e190ac3a0: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac3a0: 0500 004d | 8997 c801 | 0000 410f | 0d8a 0001 | 0000 49c7 | 0301 0000 | 0041 0f0d | 8a40 0100 
+  0x0000792e190ac3c0: ;   {metadata({type array int})}
+  0x0000792e190ac3c0: 0041 c743 | 08c8 0d04 | 0a41 0f0d | 8a80 0100 | 0041 c743 | 0c03 0000 | 004d 8963 | 104d 8963 
+  0x0000792e190ac3e0: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac3e0: 1833 c9b8 | 0100 0000 | 41b9 0200 | 0000 4533 | c041 ba01 | 0000 00be | 0100 0000 | 4533 edeb 
+  0x0000792e190ac400: 2983 f903 | 0f83 8a08 | 0000 4189 
+
+  0x0000792e190ac40c: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac40c: 7c8b 1049 
+
+  0x0000792e190ac410: ; ImmutableOopMap {r11=Oop rbx=Oop [16]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac410: 8b7f 3085 
+
+  0x0000792e190ac414: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac414: 0741 83fa | 010f 8f67 | 0400 0045 
+
+  0x0000792e190ac420: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac420: 8bc2 458d | 5001 8bc8 
+
+  0x0000792e190ac428: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@53 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac428: 8bc2 4183 
+
+  0x0000792e190ac42c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@29 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac42c: f902 7e14 | 4183 f801 | 0f8e a700 
+
+  0x0000792e190ac438: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac438: 0000 488b | 5c24 10e9 | cb00 0000 | 4183 f805 | 0f83 a205 | 0000 488b | 5c24 1042 
+
+  0x0000792e190ac454: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac454: 8b7c 8310 | 4183 f905 | 0f83 b205 | 0000 428b 
+
+  0x0000792e190ac464: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac464: 6c8b 108d | 5001 3bfd 
+
+  0x0000792e190ac46c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@40 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac46c: 7e93 41ff 
+
+  0x0000792e190ac470: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@71 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac470: c183 f903 | 0f83 6606 | 0000 4189 
+
+  0x0000792e190ac47c: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac47c: 6c8b 1049 
+
+  0x0000792e190ac480: ; ImmutableOopMap {r11=Oop rbx=Oop [16]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac480: 8b7f 3085 
+
+  0x0000792e190ac484: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac484: 0741 83f8 
+
+  0x0000792e190ac488: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac488: 017e 9741 | 83f9 020f | 8ef1 0300 
+
+  0x0000792e190ac494: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac494: 00e9 7500 | 0000 83f9 | 020f 831d | 0800 0045 
+
+  0x0000792e190ac4a4: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac4a4: 8954 8810 
+
+  0x0000792e190ac4a8: ; ImmutableOopMap {r8=Oop [8]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac4a8: 498b 5f30 
+
+  0x0000792e190ac4ac: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac4ac: 8503 83fa | 030f 8f24 | 0400 008b | da0f 1f80 
+
+  0x0000792e190ac4bc: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac4bc: 0000 0000 | 8d53 0141 | 8bcb 448b | dfe9 1301 | 0000 6690 | 8d78 0141 | 8d6a 018b | c88b c745 
+  0x0000792e190ac4dc: 8bc2 448b 
+
+  0x0000792e190ac4e0: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@85 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac4e0: d541 83f8 | 050f 8389 | 0600 0048 | 8b5c 2410 | 428b 6c83 
+
+  0x0000792e190ac4f4: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@98 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac4f4: 1083 f903 | 0f83 a206 | 0000 4189 
+
+  0x0000792e190ac500: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac500: 6c8b 1049 
+
+  0x0000792e190ac504: ; ImmutableOopMap {r11=Oop rbx=Oop [16]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac504: 8b7f 3085 
+
+  0x0000792e190ac508: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac508: 0741 83fa 
+
+  0x0000792e190ac50c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac50c: 017e c189 | 7424 1044 | 896c 2414 | 4889 5c24 
+
+  0x0000792e190ac51c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac51c: 0845 8b43 | 104c 8b4c | 2408 4589 | 4110 458b | 5314 4589 | 5114 458b | 5b18 4589 
+
+  0x0000792e190ac538: ;*synchronization entry
+                      ; - Test9::mergeSort@-1 (line 17)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac538: 5918 488b | 7424 08ba | 0300 0000 | b903 0000 
+
+  0x0000792e190ac548: ;   {static_call}
+  0x0000792e190ac548: 0066 90e8 
+
+  0x0000792e190ac54c: ; ImmutableOopMap {[8]=Oop }
+                      ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac54c: 1024 faff 
+
+  0x0000792e190ac550: ;   {post_call_nop}
+  0x0000792e190ac550: 0f1f 8400 
+
+  0x0000792e190ac554: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac554: 4804 0006 | 488b 7424 | 08ba 0400 | 0000 b904 
+
+  0x0000792e190ac564: ;   {static_call}
+  0x0000792e190ac564: 0000 00e8 
+
+  0x0000792e190ac568: ; ImmutableOopMap {[8]=Oop }
+                      ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac568: f423 faff 
+
+  0x0000792e190ac56c: ;   {post_call_nop}
+  0x0000792e190ac56c: 0f1f 8400 | 6404 0007 | 4d8b 87c8 | 0100 004d | 8bd0 4983 | c218 4d3b | 97d8 0100 | 000f 8319 
+  0x0000792e190ac58c: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac58c: 0400 004d | 8997 c801 | 0000 410f | 0d8a 0001 | 0000 49c7 | 0001 0000 | 0041 0f0d | 8a40 0100 
+  0x0000792e190ac5ac: ;   {metadata({type array int})}
+  0x0000792e190ac5ac: 0041 c740 | 08c8 0d04 | 0a41 0f0d | 8a80 0100 | 0041 c740 | 0c02 0000 | 004d 8960 
+
+  0x0000792e190ac5c8: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac5c8: 1033 c941 | bb01 0000 | 0041 b904 | 0000 00bb | 0300 0000 | ba04 0000 
+
+  0x0000792e190ac5e0: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@53 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac5e0: 0041 83f9 
+
+  0x0000792e190ac5e4: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@29 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac5e4: 047e 0e83 | fb03 0f8e 
+
+  0x0000792e190ac5ec: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac5ec: c100 0000 | e9e8 0000 | 0083 fb05 | 0f83 3e04 | 0000 4c8b | 5424 0845 
+
+  0x0000792e190ac604: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac604: 8b54 9a10 | 4183 f905 | 0f83 4e04 | 0000 488b | 7c24 0846 
+
+  0x0000792e190ac618: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac618: 8b6c 8f10 | 418d 7b01 | 453b d50f | 8e71 feff 
+
+  0x0000792e190ac628: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@40 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac628: ff41 ffc1 | 83f9 020f | 83d3 0400 | 0045 896c 
+
+  0x0000792e190ac638: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac638: 8810 498b 
+
+  0x0000792e190ac63c: ; ImmutableOopMap {r8=Oop [8]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac63c: 5730 8502 | 83fb 030f | 8e77 feff 
+
+  0x0000792e190ac648: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac648: ff41 83f9 | 040f 8e88 
+
+  0x0000792e190ac650: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac650: 0200 00e9 | 8500 0000 | 448b 4424 | 1441 83f8 | 050f 8389 | 0600 0043 
+
+  0x0000792e190ac668: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac668: 897c 8210 
+
+  0x0000792e190ac66c: ; ImmutableOopMap {r10=Oop [8]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac66c: 498b 5f30 
+
+  0x0000792e190ac670: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac670: 8503 4183 | f902 0f8f | a302 0000 
+
+  0x0000792e190ac67c: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac67c: 458b c190 | 458d 4801 | 8b7c 2410 | 897c 2414 | 894c 2410 | e9c9 0000 | 0066 6666 | 0f1f 8400 
+  0x0000792e190ac69c: 0000 0000 | 458d 5301 | 8d7a 0141 | 8bcb 458b | da8b da8b 
+
+  0x0000792e190ac6b0: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@85 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac6b0: d783 fb05 | 0f83 0e05 | 0000 4c8b | 5424 0841 
+
+  0x0000792e190ac6c0: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@98 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac6c0: 8b6c 9a10 | 83f9 020f | 832b 0500 | 0041 896c 
+
+  0x0000792e190ac6d0: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac6d0: 8810 498b 
+
+  0x0000792e190ac6d4: ; ImmutableOopMap {r8=Oop [8]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac6d4: 5f30 8503 | 83fa 037e 
+
+  0x0000792e190ac6dc: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac6dc: c345 8b50 | 104c 8b5c | 2408 4589 
+
+  0x0000792e190ac6e8: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac6e8: 531c 4d8b | 97c8 0100 | 0045 8b40 | 1445 8943 
+
+  0x0000792e190ac6f8: ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@148 (line 34)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac6f8: 204d 8bda | 4983 c328 | 4d3b 9fd8 | 0100 000f | 83bf 0200 
+
+  0x0000792e190ac70c: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac70c: 004d 899f | c801 0000 | 410f 0d8b | 0001 0000 | 49c7 0201 | 0000 0041 | 0f0d 8b40 
+
+  0x0000792e190ac728: ;   {metadata({type array int})}
+  0x0000792e190ac728: 0100 0041 | c742 08c8 | 0d04 0a41 | 0f0d 8b80 | 0100 0041 | c742 0c05 | 0000 004d | 8962 104d 
+  0x0000792e190ac748: 8962 184d 
+
+  0x0000792e190ac74c: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac74c: 8962 2041 | bb03 0000 | 0045 33c0 | 41b9 0100 
+
+  0x0000792e190ac75c: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@53 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac75c: 0000 4183 
+
+  0x0000792e190ac760: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@29 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac760: fb04 7e0f | 4183 f802 | 0f8e 9100 
+
+  0x0000792e190ac76c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac76c: 0000 e9c0 | 0000 0041 | 83f8 050f | 830f 0300 | 0048 8b4c | 2408 428b 
+
+  0x0000792e190ac784: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac784: 7c81 1041 | 83fb 050f | 8323 0300 | 0042 8b5c 
+
+  0x0000792e190ac794: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac794: 9910 8b4c 
+
+  0x0000792e190ac798: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@47 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac798: 2410 ffc1 | 3bfb 0f8e 
+
+  0x0000792e190ac7a0: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@40 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac7a0: b4fe ffff 
+
+  0x0000792e190ac7a4: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@71 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac7a4: 41ff c38b | 7c24 1483 | ff05 0f83 | 8403 0000 | 4189 5cba 
+
+  0x0000792e190ac7b8: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac7b8: 1049 8b5f 
+
+  0x0000792e190ac7bc: ; ImmutableOopMap {r10=Oop [8]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@76 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac7bc: 3085 0341 | 83f8 020f | 8eb7 feff 
+
+  0x0000792e190ac7c8: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@23 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac7c8: ff41 83fb | 040f 8e4c 
+
+  0x0000792e190ac7d0: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac7d0: 0100 00eb | 5e66 6666 | 0f1f 8400 | 0000 0000 | 448b 4424 
+
+  0x0000792e190ac7e4: ;*iinc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@89 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac7e4: 1041 ffc0 | 418d 4901 | 8b5c 2410 | 895c 2414 | 4489 4424 | 1045 8bc1 
+
+  0x0000792e190ac7fc: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@85 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac7fc: 448b c941 | 83f8 050f | 831b 0400 | 0048 8b4c | 2408 428b 
+
+  0x0000792e190ac810: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@98 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac810: 6c81 1044 | 8b44 2414 | 4183 f805 | 0f83 3604 | 0000 4389 
+
+  0x0000792e190ac824: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac824: 6c82 1049 
+
+  0x0000792e190ac828: ; ImmutableOopMap {r10=Oop [8]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac828: 8b4f 3085 
+
+  0x0000792e190ac82c: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@100 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac82c: 0141 83f9 
+
+  0x0000792e190ac830: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac830: 027e ad41 
+
+  0x0000792e190ac834: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@147 (line 34)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac834: 8b42 104c | 8b5c 2408 | 4189 4310 | 458b 4214 | 4589 4314 | 458b 5a18 | 4c8b 4424 | 0845 8958 
+  0x0000792e190ac854: 1845 8b42 | 1c4c 8b5c | 2408 4589 | 431c 458b | 5220 4589 
+
+  0x0000792e190ac868: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@29 (line 28)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac868: 5320 4883 
+
+  0x0000792e190ac86c: ;   {poll_return}
+  0x0000792e190ac86c: c450 5d49 | 3b67 280f | 87e7 0500 | 00c3 448d | 4201 8bc2 | 418b d045 
+
+  0x0000792e190ac884: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@109 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac884: 8bca 458d | 5101 4183 | f905 0f83 | 9804 0000 | 428b 6c8b 
+
+  0x0000792e190ac898: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@122 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac898: 1083 f803 | 0f83 b604 | 0000 4189 
+
+  0x0000792e190ac8a4: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac8a4: 6c83 1049 | 8b4f 304c 
+
+  0x0000792e190ac8ac: ; ImmutableOopMap {r11=Oop r8=Oop rbx=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac8ac: 8bc3 8501 | 4183 fa02 
+
+  0x0000792e190ac8b4: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac8b4: 7ec4 8974 | 2410 4489 | 6c24 144c | 8944 2408 | e954 fcff | ff0f 1f80 | 0000 0000 | 8d5f 0144 
+  0x0000792e190ac8d4: 8bdf 448b 
+
+  0x0000792e190ac8d8: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@109 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac8d8: c98b fb41 | 8d49 0141 | 83f9 050f | 8397 0400 | 004c 8b54 | 2408 438b 
+
+  0x0000792e190ac8f0: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@122 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac8f0: 6c8a 1041 | 83fb 020f | 83af 0400 | 0043 896c 
+
+  0x0000792e190ac900: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac900: 9810 4d8b 
+
+  0x0000792e190ac904: ; ImmutableOopMap {r8=Oop [8]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac904: 4f30 4185 
+
+  0x0000792e190ac908: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac908: 0183 f904 
+
+  0x0000792e190ac90c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac90c: 7ec2 e9ca | fdff ff8d | 5901 894c | 2410 458b 
+
+  0x0000792e190ac91c: ;*aload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@109 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac91c: d88b cb45 | 8d43 0141 | 83fb 050f | 83a3 0400 | 004c 8b4c | 2408 438b 
+
+  0x0000792e190ac934: ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@122 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac934: 6c99 1044 | 8b4c 2410 | 4183 f905 | 0f83 b604 | 0000 4389 
+
+  0x0000792e190ac948: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@58 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac948: 6c8a 104d 
+
+  0x0000792e190ac94c: ; ImmutableOopMap {r10=Oop [8]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+                      ;   {poll}
+  0x0000792e190ac94c: 8b4f 3041 
+
+  0x0000792e190ac950: ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@124 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac950: 8501 4183 
+
+  0x0000792e190ac954: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@106 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac954: f804 7ebb | e9d6 feff 
+
+  0x0000792e190ac95c: ;   {metadata({type array int})}
+  0x0000792e190ac95c: ff48 bec8 | 0d04 0a00 | 0000 00ba | 0500 0000 
+
+  0x0000792e190ac96c: ;   {runtime_call C2 Runtime new_array}
+  0x0000792e190ac96c: 6666 90e8 
+
+  0x0000792e190ac970: ; ImmutableOopMap {}
+                      ;*newarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ac970: ec5d fdff 
+
+  0x0000792e190ac974: ;   {post_call_nop}
+  0x0000792e190ac974: 0f1f 8400 
+
+  0x0000792e190ac978: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ac978: 6c08 0010 | e9a8 f9ff 
+
+  0x0000792e190ac980: ;   {metadata({type array int})}
+  0x0000792e190ac980: ff48 bec8 | 0d04 0a00 | 0000 00ba | 0300 0000 
+
+  0x0000792e190ac990: ;   {runtime_call C2 Runtime new_array}
+  0x0000792e190ac990: 6666 90e8 
+
+  0x0000792e190ac994: ; ImmutableOopMap {rbp=Oop [16]=Oop }
+                      ;*newarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac994: c85d fdff 
+
+  0x0000792e190ac998: ;   {post_call_nop}
+  0x0000792e190ac998: 0f1f 8400 
+
+  0x0000792e190ac99c: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac99c: 9008 0011 | 4c8b d8e9 | 39fa ffff 
+
+  0x0000792e190ac9a8: ;   {metadata({type array int})}
+  0x0000792e190ac9a8: 48be c80d | 040a 0000 | 0000 ba02 
+
+  0x0000792e190ac9b4: ;   {runtime_call C2 Runtime new_array}
+  0x0000792e190ac9b4: 0000 00e8 
+
+  0x0000792e190ac9b8: ; ImmutableOopMap {[8]=Oop }
+                      ;*newarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac9b8: a45d fdff 
+
+  0x0000792e190ac9bc: ;   {post_call_nop}
+  0x0000792e190ac9bc: 0f1f 8400 
+
+  0x0000792e190ac9c0: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac9c0: b408 0012 | 4c8b c0e9 
+
+  0x0000792e190ac9c8: ;*synchronization entry
+                      ; - Test9::merge@-1 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac9c8: fdfb ffff 
+
+  0x0000792e190ac9cc: ;   {metadata({type array int})}
+  0x0000792e190ac9cc: 48be c80d | 040a 0000 | 0000 ba05 
+
+  0x0000792e190ac9d8: ;   {runtime_call C2 Runtime new_array}
+  0x0000792e190ac9d8: 0000 00e8 
+
+  0x0000792e190ac9dc: ; ImmutableOopMap {[8]=Oop }
+                      ;*newarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac9dc: 805d fdff 
+
+  0x0000792e190ac9e0: ;   {post_call_nop}
+  0x0000792e190ac9e0: 0f1f 8400 
+
+  0x0000792e190ac9e4: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ac9e4: d808 0013 | 4c8b d0e9 | 5ffd ffff | bee4 ffff | ff44 890c | 2489 4c24 | 0444 8944 | 2408 4c89 
+  0x0000792e190aca04: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190aca04: 5c24 28e8 
+
+  0x0000792e190aca08: ; ImmutableOopMap {[16]=Oop [40]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aca08: 5448 fdff 
+
+  0x0000792e190aca0c: ;   {post_call_nop}
+  0x0000792e190aca0c: 0f1f 8400 | 0409 0014 | bee4 ffff | ff41 8be8 | 894c 2404 | 4489 4c24 | 084c 895c | 2428 897c 
+  0x0000792e190aca2c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190aca2c: 240c 90e8 
+
+  0x0000792e190aca30: ; ImmutableOopMap {[16]=Oop [40]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aca30: 2c48 fdff 
+
+  0x0000792e190aca34: ;   {post_call_nop}
+  0x0000792e190aca34: 0f1f 8400 | 2c09 0015 | bee4 ffff | ff4c 8944 | 2410 4489 | 4c24 1c89 | 4c24 2089 
+
+  0x0000792e190aca50: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190aca50: 5c24 24e8 
+
+  0x0000792e190aca54: ; ImmutableOopMap {[8]=Oop [16]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aca54: 0848 fdff 
+
+  0x0000792e190aca58: ;   {post_call_nop}
+  0x0000792e190aca58: 0f1f 8400 | 5009 0016 | bee4 ffff | ff4c 8944 | 2410 895c | 2418 894c | 2420 4489 | 5424 2444 
+  0x0000792e190aca78: 894c 2430 
+
+  0x0000792e190aca7c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190aca7c: 6666 90e8 
+
+  0x0000792e190aca80: ; ImmutableOopMap {[8]=Oop [16]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190aca80: dc47 fdff 
+
+  0x0000792e190aca84: ;   {post_call_nop}
+  0x0000792e190aca84: 0f1f 8400 | 7c09 0017 | bee4 ffff | ff8b 6c24 | 144c 8954 | 2410 4489 | 5c24 1c44 | 8944 2428 
+  0x0000792e190acaa4: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acaa4: 6666 90e8 
+
+  0x0000792e190acaa8: ; ImmutableOopMap {[8]=Oop [16]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@35 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acaa8: b447 fdff 
+
+  0x0000792e190acaac: ;   {post_call_nop}
+  0x0000792e190acaac: 0f1f 8400 | a409 0018 | bee4 ffff | ff8b 6c24 | 144c 8954 | 2410 4489 | 4424 1889 | 7c24 2044 
+  0x0000792e190acacc: 895c 2424 
+
+  0x0000792e190acad0: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acad0: 6666 90e8 
+
+  0x0000792e190acad4: ; ImmutableOopMap {[8]=Oop [16]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@39 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acad4: 8847 fdff 
+
+  0x0000792e190acad8: ;   {post_call_nop}
+  0x0000792e190acad8: 0f1f 8400 | d009 0019 | bee4 ffff | ff44 8904 | 2444 894c | 2404 8944 | 2408 894c | 240c 4c89 
+  0x0000792e190acaf8: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acaf8: 5c24 30e8 
+
+  0x0000792e190acafc: ; ImmutableOopMap {[16]=Oop [48]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@75 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acafc: 6047 fdff 
+
+  0x0000792e190acb00: ;   {post_call_nop}
+  0x0000792e190acb00: 0f1f 8400 | f809 001a | bee4 ffff | ff89 5c24 | 1844 894c | 241c 4489 | 5c24 204c | 8944 2428 
+  0x0000792e190acb20: 894c 2424 | 4489 6c24 
+
+  0x0000792e190acb28: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acb28: 3066 90e8 
+
+  0x0000792e190acb2c: ; ImmutableOopMap {[8]=Oop [40]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@75 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acb2c: 3047 fdff 
+
+  0x0000792e190acb30: ;   {post_call_nop}
+  0x0000792e190acb30: 0f1f 8400 | 280a 001b | bee4 ffff | ff8b 6c24 | 1048 8944 | 24f8 8b44 | 2414 8904 | 2448 8b44 
+  0x0000792e190acb50: 24f8 4489 | 4424 0444 | 895c 2420 | 4c89 5424 | 2889 5c24 
+
+  0x0000792e190acb64: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acb64: 2466 90e8 
+
+  0x0000792e190acb68: ; ImmutableOopMap {[8]=Oop [40]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@75 (line 30)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acb68: f446 fdff 
+
+  0x0000792e190acb6c: ;   {post_call_nop}
+  0x0000792e190acb6c: 0f1f 8400 | 640a 001c | bee4 ffff | ff41 8bea | 4489 0c24 | 8944 2404 | 894c 2408 | 4489 4424 
+  0x0000792e190acb8c: 0c4c 895c 
+
+  0x0000792e190acb90: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acb90: 2430 90e8 
+
+  0x0000792e190acb94: ; ImmutableOopMap {[16]=Oop [48]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@98 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acb94: c846 fdff 
+
+  0x0000792e190acb98: ;   {post_call_nop}
+  0x0000792e190acb98: 0f1f 8400 | 900a 001d | bee4 ffff | ff44 8914 | 2444 894c | 2404 8944 | 2408 894c | 240c 4c89 
+  0x0000792e190acbb8: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acbb8: 5c24 30e8 
+
+  0x0000792e190acbbc: ; ImmutableOopMap {[16]=Oop [48]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@99 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acbbc: a046 fdff 
+
+  0x0000792e190acbc0: ;   {post_call_nop}
+  0x0000792e190acbc0: 0f1f 8400 | b80a 001e | bee4 ffff | ff89 5424 | 1844 894c | 241c 4489 | 5c24 204c | 8944 2428 
+  0x0000792e190acbe0: 894c 2424 | 895c 2438 
+
+  0x0000792e190acbe8: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acbe8: 6666 90e8 
+
+  0x0000792e190acbec: ; ImmutableOopMap {[8]=Oop [40]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@98 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acbec: 7046 fdff 
+
+  0x0000792e190acbf0: ;   {post_call_nop}
+  0x0000792e190acbf0: 0f1f 8400 | e80a 001f | bee4 ffff | ff89 5424 | 2044 894c | 2424 4489 | 5c24 284c | 8944 2430 
+  0x0000792e190acc10: 894c 242c 
+
+  0x0000792e190acc14: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acc14: 6666 90e8 
+
+  0x0000792e190acc18: ; ImmutableOopMap {[8]=Oop [48]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@99 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acc18: 4446 fdff 
+
+  0x0000792e190acc1c: ;   {post_call_nop}
+  0x0000792e190acc1c: 0f1f 8400 | 140b 0020 | bee4 ffff | ff8b 6c24 | 108b 4c24 | 1489 0c24 | 4489 4c24 | 0444 895c 
+  0x0000792e190acc3c: 2420 4c89 | 5424 2844 | 8944 2424 
+
+  0x0000792e190acc48: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acc48: 6666 90e8 
+
+  0x0000792e190acc4c: ; ImmutableOopMap {[8]=Oop [40]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@98 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acc4c: 1046 fdff 
+
+  0x0000792e190acc50: ;   {post_call_nop}
+  0x0000792e190acc50: 0f1f 8400 | 480b 0021 | bee4 ffff | ff8b 5c24 | 1089 1c24 | 4889 4424 | f88b 4424 | 1489 4424 
+  0x0000792e190acc70: 0448 8b44 | 24f8 4489 | 4c24 2044 | 895c 2424 | 4c89 5424 
+
+  0x0000792e190acc84: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acc84: 2866 90e8 
+
+  0x0000792e190acc88: ; ImmutableOopMap {[8]=Oop [40]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@99 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acc88: d445 fdff 
+
+  0x0000792e190acc8c: ;   {post_call_nop}
+  0x0000792e190acc8c: 0f1f 8400 | 840b 0022 | bee4 ffff | ff41 8bea | 4489 0c24 | 8944 2404 | 894c 2408 | 4c89 5c24 
+  0x0000792e190accac: 3089 7c24 
+
+  0x0000792e190accb0: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190accb0: 0c66 90e8 
+
+  0x0000792e190accb4: ; ImmutableOopMap {[16]=Oop [48]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@57 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190accb4: a845 fdff 
+
+  0x0000792e190accb8: ;   {post_call_nop}
+  0x0000792e190accb8: 0f1f 8400 | b00b 0023 | bee4 ffff | ff89 5424 | 1844 894c | 241c 4489 | 5c24 204c | 8944 2428 
+  0x0000792e190accd8: 894c 2424 | 4489 5424 
+
+  0x0000792e190acce0: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acce0: 3066 90e8 
+
+  0x0000792e190acce4: ; ImmutableOopMap {[8]=Oop [40]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@57 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acce4: 7845 fdff 
+
+  0x0000792e190acce8: ;   {post_call_nop}
+  0x0000792e190acce8: 0f1f 8400 | e00b 0024 | bee4 ffff | ff8b 6c24 | 1048 8944 | 24f8 8b44 | 2414 8904 | 2448 8b44 
+  0x0000792e190acd08: 24f8 4489 | 4c24 0444 | 895c 2420 | 4c89 5424 | 2889 7c24 
+
+  0x0000792e190acd1c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acd1c: 2466 90e8 
+
+  0x0000792e190acd20: ; ImmutableOopMap {[8]=Oop [40]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@57 (line 29)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acd20: 3c45 fdff 
+
+  0x0000792e190acd24: ;   {post_call_nop}
+  0x0000792e190acd24: 0f1f 8400 | 1c0c 0025 | bee4 ffff | ff8b ea89 | 0424 4489 | 4c24 0448 | 895c 2410 | 4489 5424 
+  0x0000792e190acd44: 284c 895c 
+
+  0x0000792e190acd48: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acd48: 2430 90e8 
+
+  0x0000792e190acd4c: ; ImmutableOopMap {[16]=Oop [48]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@122 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acd4c: 1045 fdff 
+
+  0x0000792e190acd50: ;   {post_call_nop}
+  0x0000792e190acd50: 0f1f 8400 | 480c 0026 | bee4 ffff | ff89 1424 | 8944 2404 | 4889 5c24 | 1044 8954 | 2428 4c89 
+  0x0000792e190acd70: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acd70: 5c24 30e8 
+
+  0x0000792e190acd74: ; ImmutableOopMap {[16]=Oop [48]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@123 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acd74: e844 fdff 
+
+  0x0000792e190acd78: ;   {post_call_nop}
+  0x0000792e190acd78: 0f1f 8400 | 700c 0027 | bee4 ffff | ff89 4c24 | 1889 7c24 | 1c4c 8944 | 2420 4489 | 5c24 2844 
+  0x0000792e190acd98: 894c 242c 
+
+  0x0000792e190acd9c: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acd9c: 6666 90e8 
+
+  0x0000792e190acda0: ; ImmutableOopMap {[8]=Oop [32]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@122 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acda0: bc44 fdff 
+
+  0x0000792e190acda4: ;   {post_call_nop}
+  0x0000792e190acda4: 0f1f 8400 | 9c0c 0028 | bee4 ffff | ff89 4c24 | 2089 7c24 | 244c 8944 | 2428 4489 
+
+  0x0000792e190acdc0: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acdc0: 5c24 30e8 
+
+  0x0000792e190acdc4: ; ImmutableOopMap {[8]=Oop [40]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@123 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acdc4: 9844 fdff 
+
+  0x0000792e190acdc8: ;   {post_call_nop}
+  0x0000792e190acdc8: 0f1f 8400 | c00c 0029 | bee4 ffff | ff8b 6c24 | 1044 8944 | 2418 894c | 241c 4c89 | 5424 2044 
+  0x0000792e190acde8: 895c 2430 
+
+  0x0000792e190acdec: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190acdec: 6666 90e8 
+
+  0x0000792e190acdf0: ; ImmutableOopMap {[8]=Oop [32]=Oop }
+                      ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@122 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190acdf0: 6c44 fdff 
+
+  0x0000792e190acdf4: ;   {post_call_nop}
+  0x0000792e190acdf4: 0f1f 8400 | ec0c 002a | bee4 ffff | ff48 8944 | 24f8 8b44 | 2410 8904 | 2448 8b44 | 24f8 4489 
+  0x0000792e190ace14: 4424 0489 | 4c24 204c | 8954 2428 
+
+  0x0000792e190ace20: ;   {runtime_call UncommonTrapBlob}
+  0x0000792e190ace20: 6666 90e8 
+
+  0x0000792e190ace24: ; ImmutableOopMap {[8]=Oop [40]=Oop }
+                      ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@123 (line 33)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ace24: 3844 fdff 
+
+  0x0000792e190ace28: ;   {post_call_nop}
+  0x0000792e190ace28: 0f1f 8400 
+
+  0x0000792e190ace2c: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ace2c: 200d 002b | 488b f0eb 
+
+  0x0000792e190ace34: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ace34: 2148 8bf0 
+
+  0x0000792e190ace38: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@5 (line 26)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ace38: eb1c 488b 
+
+  0x0000792e190ace3c: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ace3c: f0eb 1748 
+
+  0x0000792e190ace40: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ace40: 8bf0 eb12 | 488b f0eb 
+
+  0x0000792e190ace48: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ace48: 0d48 8bf0 
+
+  0x0000792e190ace4c: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@14 (line 19)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ace4c: eb08 488b 
+
+  0x0000792e190ace50: ;*invokestatic mergeSort {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::mergeSort@22 (line 20)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ace50: f0eb 0348 
+
+  0x0000792e190ace54: ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::test@1 (line 11)
+  0x0000792e190ace54: 8bf0 4883 
+
+  0x0000792e190ace58: ;   {runtime_call C2 Runtime rethrow}
+  0x0000792e190ace58: c450 5de9 
+
+  0x0000792e190ace5c: ;*if_icmpgt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - Test9::merge@82 (line 32)
+                      ; - Test9::mergeSort@29 (line 21)
+                      ; - Test9::test@31 (line 12)
+  0x0000792e190ace5c: 00d3 fdff 
+
+  0x0000792e190ace60: ;   {internal_word}
+  0x0000792e190ace60: 49ba 6fc8 | 0a19 2e79 | 0000 4d89 | 9760 0400 
+
+  0x0000792e190ace70: ;   {runtime_call SafepointBlob}
+  0x0000792e190ace70: 00e9 ea8a 
+
+  0x0000792e190ace74: ;   {runtime_call StubRoutines (final stubs)}
+  0x0000792e190ace74: faff e845 | a6f8 ffe9 | 5af4 ffff 
+[Stub Code]
+  0x0000792e190ace80: ;   {no_reloc}
+  0x0000792e190ace80: 48bb 0000 | 0000 0000 
+
+  0x0000792e190ace88: ;   {runtime_call nmethod}
+  0x0000792e190ace88: 0000 e9fb 
+
+  0x0000792e190ace8c: ;   {runtime_call ExceptionBlob}
+  0x0000792e190ace8c: ffff ffe9 | cc46 fdff 
+[Deopt Handler Code]
+  0x0000792e190ace94: e800 0000 | 0048 832c 
+
+  0x0000792e190ace9c: ;   {runtime_call DeoptimizationBlob}
+  0x0000792e190ace9c: 2405 e95d | 80fa fff4 | f4f4 f4f4 
+[/MachCode]
+                            @ 31   Test9::mergeSort (33 bytes)   inline (hot)
+                              @ 14   Test9::mergeSort (33 bytes)   inline (hot)
+                                @ 14   Test9::mergeSort (33 bytes)   failed to inline: recursive inlining is too deep
+                                @ 22   Test9::mergeSort (33 bytes)   failed to inline: recursive inlining is too deep
+                                @ 29   Test9::merge (156 bytes)   inline (hot)
+                              @ 22   Test9::mergeSort (33 bytes)   inline (hot)
+                                @ 14   Test9::mergeSort (33 bytes)   failed to inline: recursive inlining is too deep
+                                @ 22   Test9::mergeSort (33 bytes)   failed to inline: recursive inlining is too deep
+                                @ 29   Test9::merge (156 bytes)   inline (hot)
+                              @ 29   Test9::merge (156 bytes)   inline (hot)
+Done

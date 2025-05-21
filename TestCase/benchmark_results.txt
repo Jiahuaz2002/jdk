@@ -2,11 +2,15 @@ Benchmark Results (Sorted by node.txt compressed size)
 ======================================================
 =================
 Benchmark Results
-Test5, node.txt: lzma 4314 -> 900 (20.86%), edge.txt: zlib 503 -> 362 (71.97%), code size: 352 bytes
-Test3, node.txt: lzma 4776 -> 1008 (21.11%), edge.txt: zlib 590 -> 459 (77.80%), code size: 248 bytes
-Test1, node.txt: lzma 6212 -> 1048 (16.87%), edge.txt: zlib 827 -> 610 (73.76%), code size: 432 bytes
-Test7, node.txt: lzma 6620 -> 1164 (17.58%), edge.txt: zlib 914 -> 659 (72.10%), code size: 552 bytes
-Test8, node.txt: lzma 7402 -> 1172 (15.83%), edge.txt: zlib 1089 -> 776 (71.26%), code size: 600 bytes
-Test2, node.txt: lzma 7612 -> 1200 (15.76%), edge.txt: zlib 1047 -> 788 (75.26%), code size: 560 bytes
-Test6, node.txt: lzma 15272 -> 1580 (10.35%), edge.txt: lzma 2490 -> 1624 (65.22%), code size: 1192 bytes
-Test4, node.txt: lzma 31364 -> 2612 (8.33%), edge.txt: lzma 6441 -> 3460 (53.72%), code size: 3216 bytes
+Test5, node.txt: lzma 4314 -> 900 (20.86%), edge.txt: zlib 503 -> 362 (71.97%), structure: 123  nodes, 287 edges, code size: 352 bytes
+Test10, node.txt: lzma 4776 -> 1020 (21.36%), edge.txt: zlib 590 -> 458 (77.63%), structure: 142  nodes, 326 edges, code size: 248 bytes
+Test1, node.txt: lzma 6212 -> 1048 (16.87%), edge.txt: zlib 827 -> 610 (73.76%), structure: 185  nodes, 427 edges, code size: 432 bytes
+Test3, node.txt: lzma 7412 -> 1104 (14.89%), edge.txt: zlib 930 -> 680 (73.12%), structure: 218  nodes, 480 edges, code size: 432 bytes
+Test7, node.txt: lzma 6620 -> 1160 (17.52%), edge.txt: zlib 914 -> 659 (72.10%), structure: 194  nodes, 509 edges, code size: 552 bytes
+Test8, node.txt: lzma 7402 -> 1176 (15.89%), edge.txt: zlib 1089 -> 776 (71.26%), structure: 218  nodes, 588 edges, code size: 600 bytes
+Test2, node.txt: lzma 7612 -> 1204 (15.82%), edge.txt: zlib 1047 -> 788 (75.26%), structure: 231  nodes, 550 edges, code size: 560 bytes
+Test6, node.txt: lzma 15272 -> 1588 (10.40%), edge.txt: lzma 2490 -> 1624 (65.22%), structure: 450  nodes, 1289 edges, code size: 1192 bytes
+Test4, node.txt: lzma 22650 -> 2040 (9.01%), edge.txt: lzma 3736 -> 2280 (61.03%), structure: 662  nodes, 1748 edges, code size: 2024 bytes
+Test9, node.txt: lzma 31364 -> 2624 (8.37%), edge.txt: lzma 6441 -> 3460 (53.72%), structure: 922  nodes, 3230 edges, code size: 3216 bytes
+Test11, node.txt: bz2 81888 -> 6075 (7.42%), edge.txt: lzma 26199 -> 9476 (36.17%), structure: 2417  nodes, 13200 edges, code size: 11528 bytes
+Test12, node.txt: bz2 348620 -> 23423 (6.72%), edge.txt: lzma 97201 -> 37980 (39.07%), structure: 9840  nodes, 50487 edges, code size: 0 bytes

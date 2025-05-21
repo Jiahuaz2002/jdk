@@ -14,7 +14,7 @@ CODE_PARSER="$SCRIPT_DIR/extract_codesize.py"
 echo "Benchmark Results" > "$TMP_RESULT_FILE"
 echo "=================" >> "$TMP_RESULT_FILE"
 
-for i in {1..11}; do
+for i in {1..12}; do
     CLASS="Test$i"
     echo "Running $CLASS..."
 
@@ -53,6 +53,15 @@ for i in {1..11}; do
         EDGE_RATIO="N/A"
     fi
 
+    # Parse structure.txt for node and edge count
+    if [[ -f structure.txt ]]; then
+        NODE_COUNT=$(head -n1 structure.txt)
+        EDGE_COUNT=$(tail -n1 structure.txt)
+    else
+        NODE_COUNT="?"
+        EDGE_COUNT="?"
+    fi
+
     # Run with PrintAssembly to get code size
     ASM_OUTPUT="asm_output_${CLASS}.txt"
     java -cp . -XX:+UnlockDiagnosticVMOptions \
@@ -70,7 +79,7 @@ for i in {1..11}; do
     CODE_SIZE=${CODE_SIZE:-0}
 
     # Store result with sortable node.txt key
-    echo "$NODE_SIZE|$CLASS, node.txt: $NODE_METHOD $NODE_ORIG -> $NODE_SIZE (${NODE_RATIO}%), edge.txt: $EDGE_METHOD $EDGE_ORIG -> $EDGE_SIZE (${EDGE_RATIO}%), code size: $CODE_SIZE bytes" >> "$TMP_RESULT_FILE"
+    echo "$NODE_SIZE|$CLASS, node.txt: $NODE_METHOD $NODE_ORIG -> $NODE_SIZE (${NODE_RATIO}%), edge.txt: $EDGE_METHOD $EDGE_ORIG -> $EDGE_SIZE (${EDGE_RATIO}%), structure: $NODE_COUNT nodes, $EDGE_COUNT edges, code size: $CODE_SIZE bytes" >> "$TMP_RESULT_FILE"
 
     echo "$CLASS done."
 done

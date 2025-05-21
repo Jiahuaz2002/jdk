@@ -1,4 +1,4 @@
-public class Test3 {
+public class Test10 {
     public static void main(String[] args) {
         System.out.println("Run");
         for (int i = 0; i < 10_000; i++) {
